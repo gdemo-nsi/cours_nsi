@@ -52,6 +52,7 @@ nav:
       - Thème 9: terminale/theme09.md
 
 markdown_extensions:
+  - attr_list    
   - admonition
   - pymdownx.details
   - pymdownx.superfences
