@@ -30,7 +30,8 @@ theme:
 nav:
   - Accueil: index.md
   - Première:
-      - Thème 1: premiere/theme01.md
+      - Thème 1 Representation des donnees: 
+        - Sommaire: premiere_nsi/Theme_1_Représentation_des_donnees/sommaire.md
       - Thème 2: premiere/theme02.md
       - Thème 3: premiere/theme03.md
       - Thème 4: premiere/theme04.md
@@ -48,7 +49,18 @@ nav:
       - Thème 5: terminale/theme05.md
       - Thème 6: terminale/theme06.md
       - Thème 7: terminale/theme07.md
-      - Thème 8: terminale/theme08.md
+      - Thème 8 - Algorithmique avancée:
+        - Sommaire: terminale/Theme_8_Algorithmique_avancée/sommaire.md
+        - 8.1 Diviser pour régner:
+          - Cours : terminale/Theme_8_Algorithmique_avancée/8.1 Diviser pour régner/cours.md
+          - Exercices : terminale/Theme_8_Algorithmique_avancée/8.1 Diviser pour régner/exercices.md
+        - 8.2 Programmation dynamique:
+          - Cours : terminale/Theme_8_Algorithmique_avancée/8.2 Programmation dynamique/cours.md
+          - Exercices : terminale/Theme_8_Algorithmique_avancée/8.2 Programmation dynamique/exercices.md
+        - 8.3 Recherche textuelle:
+          - Cours : terminale/Theme_8_Algorithmique_avancée/8.3 Recherche textuelle/cours.md
+          - Exercices : terminale/Theme_8_Algorithmique_avancée/8.3 Recherche textuelle/exercices.md
+
       - Thème 9: terminale/theme09.md
 
 markdown_extensions:
@@ -63,7 +75,18 @@ markdown_extensions:
   - toc:
       permalink: true
 
+
+
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+     
 plugins:
   - search
   - mkdocs-jupyter:
       include_source: true
+
+
+repo_url: https://gdemo-nsi.github.io/cours_nsi/
+
+repo_name: gdemo-nsi/cours_nsi

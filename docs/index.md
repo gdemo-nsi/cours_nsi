@@ -1,14 +1,14 @@
 # Gdemo - NSI
 
-Bienvenue sur le dépot **Numérique et Sciences Informatiques**.
+Bienvenue sur le dépot **Numérique et Sciences Informatiques** :nerd: 🖲️.
 
-L'ensemble des documents disponibles est publié sous licence CC-BY-SA.
+
 
 ## Première
 
 | # | Thème |
 |---|-------|
-| 1 | [Thème 1](premiere/theme01.md){. target="_blank"} |
+| 1 | [Thème 1 - Représentation des données](premiere/Theme_1_Représentation_des_donnees){. target="_blank"} |
 | 2 | [Thème 2](premiere/theme02.md){. target="_blank"} |
 | 3 | [Thème 3](premiere/theme03.md){. target="_blank"} |
 | 4 | [Thème 4](premiere/theme04.md){. target="_blank"} |
@@ -30,5 +30,9 @@ L'ensemble des documents disponibles est publié sous licence CC-BY-SA.
 | 5 | [Thème 5](terminale/theme05.md) {. target="_blank"} |
 | 6 | [Thème 6](terminale/theme06.md) {. target="_blank"} |
 | 7 | [Thème 7](terminale/theme07.md) {. target="_blank"} |
-| 8 | [Thème 8](terminale/theme08.md) {. target="_blank"} |
+| 8 | [Thème 8 - Algorithmique avancée](terminale/Theme_8_Algorithmique_avancée/sommaire.md) {. target="_blank"} |
 | 9 | [Thème 9](terminale/theme09.md) {. target="_blank"} |
+
+
+
+L'ensemble des documents disponibles est publié sous licence CC-BY-SA.
