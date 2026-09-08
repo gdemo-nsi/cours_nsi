@@ -29,7 +29,8 @@ theme:
 
 nav:
   - Accueil: index.md
-  - Première:
+  - Première: 
+      - Sommaire : premiere/sommaire.md
       - Thème 1 Representation des donnees: 
         - Sommaire: premiere_nsi/Theme_1_Représentation_des_donnees/sommaire.md
       - Thème 2: premiere/theme02.md
@@ -42,6 +43,7 @@ nav:
       - Thème 9: premiere/theme09.md
       - Thème 10: premiere/theme10.md
   - Terminale:
+      - Sommaire : terminale/sommaire.md
       - Thème 1: terminale/theme01.md
       - Thème 2: terminale/theme02.md
       - Thème 3: terminale/theme03.md

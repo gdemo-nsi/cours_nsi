@@ -4,7 +4,7 @@ Bienvenue sur le dépot **Numérique et Sciences Informatiques** :nerd: 🖲️.
 
 
 
-## Première
+## [Première - NSI](premiere/sommaire.md)
 
 | # | Thème |
 |---|-------|
@@ -19,7 +19,7 @@ Bienvenue sur le dépot **Numérique et Sciences Informatiques** :nerd: 🖲️.
 | 9 | [Thème 9](premiere/theme09.md){. target="_blank"} |
 | 10 | [Thème 10](premiere/theme10.md){. target="_blank"} |
 
-## Terminale
+## [Terminale - NSI](terminale/sommaire.md)
 
 | # | Thème |
 |---|-------|
