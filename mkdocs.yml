@@ -32,41 +32,58 @@ extra_css:
 
 nav:
   - Accueil: index.md
-  - Première: 
-      - Sommaire : premiere/sommaire.md
-      - Thème 1 Representation des donnees: 
-        - Sommaire: premiere_nsi/Theme_1_Représentation_des_donnees/sommaire.md
-      - Thème 2: premiere/theme02.md
-      - Thème 3: premiere/theme03.md
-      - Thème 4: premiere/theme04.md
-      - Thème 5: premiere/theme05.md
-      - Thème 6: premiere/theme06.md
-      - Thème 7: premiere/theme07.md
-      - Thème 8: premiere/theme08.md
-      - Thème 9: premiere/theme09.md
-      - Thème 10: premiere/theme10.md
+  - Première:
+      - Sommaire: premiere/sommaire.md
+      - Thème 1 Représentation des données:
+          - Cours: premiere/Theme_1_Representation_des_donnees/cours.md
+          - Exercices: premiere/Theme_1_Representation_des_donnees/exercices
+      - Thème 2:
+          - Sommaire: premiere/Theme_2_Nom_du_theme/sommaire.md
+      - Thème 3:
+          - Sommaire: premiere/Theme_3_Nom_du_theme/sommaire.md
+      - Thème 4:
+          - Sommaire: premiere/Theme_4_Nom_du_theme/sommaire.md
+      - Thème 5:
+          - Sommaire: premiere/Theme_5_Nom_du_theme/sommaire.md
+      - Thème 6:
+          - Sommaire: premiere/Theme_6_Nom_du_theme/sommaire.md
+      - Thème 7:
+          - Sommaire: premiere/Theme_7_Nom_du_theme/sommaire.md
+      - Thème 8:
+          - Sommaire: premiere/Theme_8_Nom_du_theme/sommaire.md
+      - Thème 9:
+          - Sommaire: premiere/Theme_9_Nom_du_theme/sommaire.md
+      - Thème 10:
+          - Sommaire: premiere/Theme_10_Nom_du_theme/sommaire.md
   - Terminale:
-      - Sommaire : terminale/sommaire.md
-      - Thème 1: terminale/theme01.md
-      - Thème 2: terminale/theme02.md
-      - Thème 3: terminale/theme03.md
-      - Thème 4: terminale/theme04.md
-      - Thème 5: terminale/theme05.md
-      - Thème 6: terminale/theme06.md
-      - Thème 7: terminale/theme07.md
+      - Sommaire: terminale/sommaire.md
+      - Thème 1:
+          - Sommaire: terminale/Theme_1_Nom_du_theme/sommaire.md
+      - Thème 2:
+          - Sommaire: terminale/Theme_2_Nom_du_theme/sommaire.md
+      - Thème 3:
+          - Sommaire: terminale/Theme_3_Nom_du_theme/sommaire.md
+      - Thème 4:
+          - Sommaire: terminale/Theme_4_Nom_du_theme/sommaire.md
+      - Thème 5:
+          - Sommaire: terminale/Theme_5_Nom_du_theme/sommaire.md
+      - Thème 6:
+          - Sommaire: terminale/Theme_6_Nom_du_theme/sommaire.md
+      - Thème 7:
+          - Sommaire: terminale/Theme_7_Nom_du_theme/sommaire.md
       - Thème 8 - Algorithmique avancée:
-        - Sommaire: terminale/Theme_8_Algorithmique_avancée/sommaire.md
-        - 8.1 Diviser pour régner:
-          - Cours : terminale/Theme_8_Algorithmique_avancée/8.1 Diviser pour régner/cours.md
-          - Exercices : terminale/Theme_8_Algorithmique_avancée/8.1 Diviser pour régner/exercices.md
-        - 8.2 Programmation dynamique:
-          - Cours : terminale/Theme_8_Algorithmique_avancée/8.2 Programmation dynamique/cours.md
-          - Exercices : terminale/Theme_8_Algorithmique_avancée/8.2 Programmation dynamique/exercices.md
-        - 8.3 Recherche textuelle:
-          - Cours : terminale/Theme_8_Algorithmique_avancée/8.3 Recherche textuelle/cours.md
-          - Exercices : terminale/Theme_8_Algorithmique_avancée/8.3 Recherche textuelle/exercices.md
-
-      - Thème 9: terminale/theme09.md
+          - Theme 8 - Sommaire: terminale/Theme_8_Algorithmique_avancee/sommaire.md
+          - 8.1 Diviser pour régner:
+              - Cours: terminale/Theme_8_Algorithmique_avancee/8.1_Diviser_pour_regner/cours.md
+              - Exercices: terminale/Theme_8_Algorithmique_avancee/8.1_Diviser_pour_regner/exercices.md
+          - 8.2 Programmation dynamique:
+              - Cours: terminale/Theme_8_Algorithmique_avancee/8.2_Programmation_dynamique/cours.md
+              - Exercices: terminale/Theme_8_Algorithmique_avancee/8.2_Programmation_dynamique/exercices.md
+          - 8.3 Recherche textuelle:
+              - Cours: terminale/Theme_8_Algorithmique_avancee/8.3_Recherche_textuelle/cours.md
+              - Exercices: terminale/Theme_8_Algorithmique_avancee/8.3_Recherche_textuelle/exercices.md
+      - Thème 9:
+          - Sommaire: terminale/Theme_9_Nom_du_theme/sommaire.md
 
 markdown_extensions:
   - md_in_html  #html in div
@@ -91,8 +108,5 @@ plugins:
   - search
   - mkdocs-jupyter:
       include_source: true
-
-
-repo_url: https://gdemo-nsi.github.io/cours_nsi/
 
 repo_name: gdemo-nsi/cours_nsi

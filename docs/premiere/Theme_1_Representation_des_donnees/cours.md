@@ -208,4 +208,4 @@ A suivre ...
 <!-- # nb négatif
 # 0.1 + 0.2 != 0.3
 
-ouvrir avec un ide -->
+ouvrir avec un ide ex: basthon-->
