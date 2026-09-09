@@ -8,7 +8,7 @@ Bienvenue sur le dépot **Numérique et Sciences Informatiques** :nerd: 🖲️.
 
 | # | Thème |
 |---|-------|
-| 1 | [Thème 1 - Représentation des données](premiere/Theme_1_Représentation_des_donnees){. target="_blank"} |
+| 1 | [Thème 1 - Représentation des données](premiere/Theme_1_Représentation_des_donnees/cours.md){. target="_blank"} |
 | 2 | [Thème 2](premiere/theme02.md){. target="_blank"} |
 | 3 | [Thème 3](premiere/theme03.md){. target="_blank"} |
 | 4 | [Thème 4](premiere/theme04.md){. target="_blank"} |

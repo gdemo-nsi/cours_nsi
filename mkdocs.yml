@@ -27,6 +27,9 @@ theme:
     - toc.integrate
     - content.code.copy
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Accueil: index.md
   - Première: 
@@ -66,7 +69,8 @@ nav:
       - Thème 9: terminale/theme09.md
 
 markdown_extensions:
-  - attr_list    
+  - md_in_html  #html in div
+  - attr_list    #admonitions ???
   - admonition
   - pymdownx.details
   - pymdownx.superfences

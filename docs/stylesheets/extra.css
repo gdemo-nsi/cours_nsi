@@ -1,0 +1,47 @@
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-text { text-align: center; }
+
+.caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--md-default-fg-color--light);
+  margin-top: -0.5rem;
+}
+
+.flex-row,
+.flex-row-reverse {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-row > p,
+.flex-row-reverse > p {
+  margin: 0;
+}
+
+.flex-row img,
+.flex-row-reverse img {
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Exemple d'utilisation :  
+<div class="flex-row" markdown="1">
+<div class="flex-row flex-row-reverse" markdown="1"> reverse
+Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+
+![image](image.png)
+</div>
+*/
