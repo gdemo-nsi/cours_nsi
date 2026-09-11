@@ -57,6 +57,9 @@ nav:
           - Sommaire: premiere/Theme_10_Nom_du_theme/sommaire.md
   - Terminale:
       - Sommaire: terminale/sommaire.md
+      
+      - Thème 0 - Révisions python :
+        - Sommaire : terminale/Theme_0_Revisions_python/sommaire.md
       - Thème 1:
           - Sommaire: terminale/Theme_1_Nom_du_theme/sommaire.md
       - Thème 2:
@@ -69,22 +72,22 @@ nav:
           - Sommaire: terminale/Theme_5_Nom_du_theme/sommaire.md
       - Thème 6:
           - Sommaire: terminale/Theme_6_Nom_du_theme/sommaire.md
-      - Thème 7:
-          - Sommaire: terminale/Theme_7_Nom_du_theme/sommaire.md
-      - Thème 8 - Algorithmique avancée:
-          - Theme 8 - Sommaire: terminale/Theme_8_Algorithmique_avancee/sommaire.md
-          - 8.1 Diviser pour régner:
-              - Cours: terminale/Theme_8_Algorithmique_avancee/8.1_Diviser_pour_regner/cours.md
-              - Exercices: terminale/Theme_8_Algorithmique_avancee/8.1_Diviser_pour_regner/exercices.md
-          - 8.2 Programmation dynamique:
-              - Cours: terminale/Theme_8_Algorithmique_avancee/8.2_Programmation_dynamique/cours.md
-              - Exercices: terminale/Theme_8_Algorithmique_avancee/8.2_Programmation_dynamique/exercices.md
-          - 8.3 Recherche textuelle:
-              - Cours: terminale/Theme_8_Algorithmique_avancee/8.3_Recherche_textuelle/cours.md
-              - Exercices: terminale/Theme_8_Algorithmique_avancee/8.3_Recherche_textuelle/exercices.md
+      - Thème 7 - Algorithmique avancée:
+          - Theme 7 - Sommaire: terminale/Theme_7_Algorithmique_avancee/sommaire.md
+          - 7.1 Diviser pour régner:
+              - Cours: terminale/Theme_7_Algorithmique_avancee/7.1_Diviser_pour_regner/cours.md
+              - Exercices: terminale/Theme_7_Algorithmique_avancee/7.1_Diviser_pour_regner/exercices.md
+          - 7.2 Programmation dynamique:
+              - Cours: terminale/Theme_7_Algorithmique_avancee/7.2_Programmation_dynamique/cours.md
+              - Exercices: terminale/Theme_7_Algorithmique_avancee/7.2_Programmation_dynamique/exercices.md
+          - 7.3 Recherche textuelle:
+              - Cours: terminale/Theme_7_Algorithmique_avancee/7.3_Recherche_textuelle/cours.md
+              - Exercices: terminale/Theme_7_Algorithmique_avancee/7.3_Recherche_textuelle/exercices.md
+      - Thème 8:
+          - Sommaire: terminale/Theme_8_Nom_du_theme/sommaire.md
       - Thème 9:
           - Sommaire: terminale/Theme_9_Nom_du_theme/sommaire.md
-
+    
 markdown_extensions:
   - md_in_html  #html in div
   - attr_list    #admonitions ???

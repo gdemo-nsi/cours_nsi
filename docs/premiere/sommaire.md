@@ -1,6 +1,10 @@
-# Première
+# Première NSI
 
-| # | Thème |
+Progression annuel : [Thèmes de l'année](progression_prem.md)
+
+___
+
+| N° | Thème |
 |---|-------|
 | 1 | [Représentation des données](Theme_1_Representation_des_donnees/cours.md) |
 | 2 | [Thème 2](Theme_2_Nom_du_theme/sommaire.md) |
