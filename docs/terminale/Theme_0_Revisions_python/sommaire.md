@@ -1,1 +1,1 @@
-1. Révisions de base : [activité capytale](https://capytale2.ac-paris.fr/web/c/74f7-6971914/mln)
+1. Révisions de base : [Révisions python](https://capytale2.ac-paris.fr/web/c/0de6-11531248/local)
