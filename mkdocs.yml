@@ -23,7 +23,6 @@ theme:
         name: Mode clair
   features:
     - navigation.tabs
-    - navigation.expand
     - toc.integrate
     - content.code.copy
 
@@ -32,11 +31,33 @@ extra_css:
 
 nav:
   - Accueil: index.md
+  - Seconde:
+      - Sommaire: seconde/sommaire.md
+      - Python :
+        - Cours: seconde/Python/cours.md
+        - Exercices: seconde/Python/exercice
+      - Thème 1 - Internet:
+          - Cours: seconde/Theme_1_Internet/cours.md
+          - Exercices: seconde/Theme_1_Internet/exercice.md
+      - Thème 2:
+          - Sommaire: seconde/Theme_2_Nom_du_theme/sommaire.md
+      - Thème 3:
+          - Sommaire: seconde/Theme_3_Nom_du_theme/sommaire.md
+      - Thème 4:
+          - Sommaire: seconde/Theme_4_Nom_du_theme/sommaire.md
+      - Thème 5:
+          - Sommaire: seconde/Theme_5_Nom_du_theme/sommaire.md
+      - Thème 6:
+          - Sommaire: seconde/Theme_6_Nom_du_theme/sommaire.md
+      - Thème 7:
+          - Sommaire: seconde/Theme_7_Nom_du_theme/sommaire.md
+      - Thème 8:
+          - Sommaire: seconde/Theme_8_Nom_du_theme/sommaire.md
   - Première:
       - Sommaire: premiere/sommaire.md
-      - Thème 1 Représentation des données:
+      - Thème 1 - Représentation des données:
           - Cours: premiere/Theme_1_Representation_des_donnees/cours.md
-          - Exercices: premiere/Theme_1_Representation_des_donnees/exercices
+          - Exercices: premiere/Theme_1_Representation_des_donnees/exercices.md
       - Thème 2:
           - Sommaire: premiere/Theme_2_Nom_du_theme/sommaire.md
       - Thème 3:

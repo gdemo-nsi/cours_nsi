@@ -5,7 +5,7 @@ L'année sera ponctuée avec 3 projets différents :
 
 1. Projet Jeu de carte (avec classe)   
 2. Projet RPG (avec graphe)  
-3. [Les trophées NSI !](https://trophees-nsi.fr/)  
+3. [Les trophées NSI !](https://trophees-nsi.fr/){:target="_blank"}  
 
 Vous aurez des exercices types bac dans la majorité des thèmes.
 

@@ -1,0 +1,1 @@
+1. Lien vers fiche exercice: [SNT_1.1_Internet](https://capytale2.ac-paris.fr/web/c/e9d1-11534737/local){:target="_blank"}

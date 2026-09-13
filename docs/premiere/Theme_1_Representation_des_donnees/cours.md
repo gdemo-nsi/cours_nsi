@@ -3,7 +3,7 @@ ___
 # 1. Système décimal, binaire et hexadécimal.
 
 ## Rappel des bases
-> :pencil: Voici un petit jeu simple : **décomposez 894.**
+> :writing_hand: Voici un petit jeu simple : **décomposez 894.**
 
 
 ??? info "Rappel visuel **système décimal**"
@@ -32,7 +32,7 @@ ___
 !!! tip "Exemple visuel **système binaire**"
     ![bianire](data/binaire.png)
 
-## 1.2 :pencil: Exercices
+## 1.2 :writing_hand: Exercices
 
 !!! note "Sortez une feuille !!!"
 
@@ -67,7 +67,7 @@ Petit question simple : **Savez-vous ce que c'est ?**
        
 [![transistor](data/transistor.png){: .center width="50%"}](https://fr.wikipedia.org/wiki/Transistor)
 
-??? info ":electric_plug: :high_voltage:"
+??? info "Le transistor :high_voltage:"
     [**Le transistor**](https://fr.wikipedia.org/wiki/Transistor) est le composant fondamental des ordinateurs. Il détermine (en partie), la puissance de calcul de vos ordinateurs.
 
     > Un transistor permet de faire passer un courant électrique, ou non.  

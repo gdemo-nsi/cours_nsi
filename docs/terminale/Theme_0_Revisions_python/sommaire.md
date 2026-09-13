@@ -1,1 +1,1 @@
-1. Révisions de base : [Révisions python](https://capytale2.ac-paris.fr/web/c/0de6-11531248/local)
+1. Révisions de base : [TNSI_0.1_Révisions_python](https://capytale2.ac-paris.fr/web/c/0de6-11531248/local){: target="_blank"}
