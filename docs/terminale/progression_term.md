@@ -74,7 +74,8 @@ ___
 
 ## **Thème 9 - Préparation Baccalauréat**
 !!! note "Mots-clefs"
-    - Opérations sur données *(txt, csv)*
-    - Recherche, modification, tri, fusion de tables
+    - Synthèses des notions
+    - Entrainement grand oral
+    - Entrainement épreuves
 
 
