@@ -1,6 +1,6 @@
 # Seconde SNT
 
-Progression annuel : [Thèmes de l'année](https://docs.google.com/presentation/d/1ZAI_laXHZLOLJ7z1DxkwjcFesFXTRfKR5st6-gweH-Q/edit?usp=sharing)
+Progression annuel : [Thèmes de l'année](https://docs.google.com/presentation/d/1ZAI_laXHZLOLJ7z1DxkwjcFesFXTRfKR5st6-gweH-Q/edit?usp=sharing){: target="_blank"}
 
 ___
 
