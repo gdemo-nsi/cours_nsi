@@ -81,10 +81,13 @@ nav:
       
       - Thème 0 - Révisions python :
         - Sommaire : terminale/Theme_0_Revisions_python/sommaire.md
-      - Thème 1:
-          - Sommaire: terminale/Theme_1_Nom_du_theme/sommaire.md
-      - Thème 2:
-          - Sommaire: terminale/Theme_2_Nom_du_theme/sommaire.md
+      - Thème 1 - POO :
+          - Sommaire: terminale/Theme_1_POO/sommaire.md
+          - Cours: terminale/Theme_1_POO/cours.md
+          - Exercices: terminale/Theme_1_POO/exercices.md
+      - Thème 2 - Piles et Files :
+          - Sommaire: terminale/Theme_2_Piles_Files/sommaire.md
+          - Cours: terminale/Theme_2_Piles_Files/cours.md
       - Thème 3:
           - Sommaire: terminale/Theme_3_Nom_du_theme/sommaire.md
       - Thème 4:
@@ -115,6 +118,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tilde # tilde pour barrer du texte
   - pymdownx.highlight:
       linenums: true
   - pymdownx.tabbed:

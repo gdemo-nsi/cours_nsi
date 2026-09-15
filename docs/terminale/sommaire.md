@@ -6,8 +6,8 @@ ___
 | N° | Thème |
 |---|-------|
 | 0 | [Thème 0 - révision python](Theme_0_Revisions_python/sommaire.md) |
-| 1 | [Thème 1](Theme_1_Nom_du_theme/sommaire.md) |
-| 2 | [Thème 2](Theme_2_Nom_du_theme/sommaire.md) |
+| 1 | [Thème 1 - POO](Theme_1_POO/sommaire.md) |
+| 2 | [Thème 2 - Piles & Files](Theme_2_Piles_Files/sommaire.md) |
 | 3 | [Thème 3](Theme_3_Nom_du_theme/sommaire.md) |
 | 4 | [Thème 4](Theme_4_Nom_du_theme/sommaire.md) |
 | 5 | [Thème 5](Theme_5_Nom_du_theme/sommaire.md) |
