@@ -47,16 +47,18 @@ ___
 
     e. :fire: Sur deux octets : 4577<sub>10</sub>
 
-    ??? success "Correction" 
-        a. 0100 1110<sub>2</sub> (sur un octet)
-        
-        b. 1001 1101<sub>2</sub> (sur un octet)
 
-        c. 90<sub>10</sub>
+??? success "Correction" 
+    a. 0100 1110<sub>2</sub> (sur un octet)
+    
+    b. 1001 1101<sub>2</sub> (sur un octet)
 
-        d. 127<sub>10</sub>
+    c. 90<sub>10</sub>
 
-        e. 0001 0001 1110 0001<sub>2</sub>
+    d. 127<sub>10</sub>
+
+    e. 0001 0001 1110 0001<sub>2</sub>
+
 ___
 
 # 2. Mais au fait... pourquoi on parle de bits ?
@@ -158,9 +160,9 @@ Vous vous rappelez de votre CM1 ..? Et bien nous allons refaire des divisions.
 
     Convertissez les nombres binaires suivants en bases décimal :  
 
-    a. 
+    a.  78<sub>2</sub> 
 
-    b. 
+    b. 157<sub>10</sub> 
 
     ??? success "Correction" 
         a. 0100 1110<sub>2</sub> (sur un octet)

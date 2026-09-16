@@ -1,6 +1,6 @@
 # Gdemo - NSI
 
-Bienvenue sur le dépot **Numérique et Sciences Informatiques** :nerd: 🖲️.
+Bienvenue sur le dépot **Numérique et Sciences Informatiques** 🖥️🖲️.
 
 
 - [Programme de Première](premiere/sommaire.md)

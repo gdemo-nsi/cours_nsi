@@ -1,1 +1,1 @@
-# addition / soustraction divisions 
+1. Exercices applicatifs conversion : [1NSI_1.1_exercices_applications_binaire](https://capytale2.ac-paris.fr/web/c/16fb-11609242/mln){: target="_blank"}
