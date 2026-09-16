@@ -32,32 +32,6 @@ ___
 !!! tip "Exemple visuel **système binaire**"
     ![bianire](data/binaire.png)
 
-## 1.2 :writing_hand: Exercices
-
-!!! note "Sortez une feuille !!!"
-
-    Convertissez les nombres suivants dans leur base correspondante :   
-    a. 78<sub>10</sub>  &rarr;  ?<sub>2</sub>  
-
-    b. 157<sub>10</sub>  &rarr;  ?<sub>2</sub>  
-
-    c. 0101 1010<sub>2</sub> &rarr; ?<sub>10</sub>  
-
-    d. 0111 1111<sub>2</sub> &rarr; ?<sub>10</sub>  
-
-    e. :fire: Sur deux octets : 4577<sub>10</sub>
-
-
-??? success "Correction" 
-    a. 0100 1110<sub>2</sub> (sur un octet)
-    
-    b. 1001 1101<sub>2</sub> (sur un octet)
-
-    c. 90<sub>10</sub>
-
-    d. 127<sub>10</sub>
-
-    e. 0001 0001 1110 0001<sub>2</sub>
 
 ___
 
@@ -156,19 +130,32 @@ Vous vous rappelez de votre CM1 ..? Et bien nous allons refaire des divisions.
 
     Ainsi, 77<sub>10</sub> correspond à <font color=red>1001101<sub>2</sub></font>
 
-!!! note "Sortez une feuille !"
+## 3.3 :writing_hand: Exercices 
 
-    Convertissez les nombres binaires suivants en bases décimal :  
+!!! note "Sortez une feuille !!!"
 
-    a.  78<sub>2</sub> 
+    Convertissez les nombres suivants dans leur base correspondante :   
+    a. 78<sub>10</sub>  &rarr;  ?<sub>2</sub>  
 
-    b. 157<sub>10</sub> 
+    b. 157<sub>10</sub>  &rarr;  ?<sub>2</sub>  
 
-    ??? success "Correction" 
-        a. 0100 1110<sub>2</sub> (sur un octet)
-        
-        b. 1001 1101<sub>2</sub> (sur un octet)
+    c. 0101 1010<sub>2</sub> &rarr; ?<sub>10</sub>  
 
+    d. 0111 1111<sub>2</sub> &rarr; ?<sub>10</sub>  
+
+    e. :fire: Sur deux octets : 4577<sub>10</sub>
+
+
+??? success "Correction" 
+    a. 0100 1110<sub>2</sub> (sur un octet)
+    
+    b. 1001 1101<sub>2</sub> (sur un octet)
+
+    c. 90<sub>10</sub>
+
+    d. 127<sub>10</sub>
+
+    e. 0001 0001 1110 0001<sub>2</sub>
 ___
 
 
