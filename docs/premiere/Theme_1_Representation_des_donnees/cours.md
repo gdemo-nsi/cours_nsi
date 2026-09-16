@@ -205,9 +205,3 @@ Comme indiqué dans le paragraphe précédent, il est facile de convertir des no
 
 Tableau de conversion décimal &rarr; binaire &rarr; héxa :heart:
 {.caption}
-
-A suivre ...
-<!-- # nb négatif
-# 0.1 + 0.2 != 0.3
-
-ouvrir avec un ide ex: basthon-->
