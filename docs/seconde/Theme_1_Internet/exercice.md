@@ -1,1 +1,2 @@
-1. Lien vers fiche exercice: [SNT_1.1_Internet](https://capytale2.ac-paris.fr/web/c/e9d1-11534737/local){:target="_blank"}
+1. Lien vers activité Capytale : [SNT_1.1_Internet](https://capytale2.ac-paris.fr/web/c/6f92-11652141/mln){:target="_blank"}
+2. Lien vers consignes exposés : [SNT_1.2_Exposes_internet](exposes.md)

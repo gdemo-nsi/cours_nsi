@@ -35,10 +35,12 @@ nav:
       - Sommaire: seconde/sommaire.md
       - Python :
         - Cours: seconde/Python/cours.md
-        - Exercices: seconde/Python/exercice
+        - Exercices: seconde/Python/exercice.md
+        
       - Thème 1 - Internet:
           - Cours: seconde/Theme_1_Internet/cours.md
           - Exercices: seconde/Theme_1_Internet/exercice.md
+          - Exposés : seconde/Theme_1_Internet/exposes.md
       - Thème 2:
           - Sommaire: seconde/Theme_2_Nom_du_theme/sommaire.md
       - Thème 3:
