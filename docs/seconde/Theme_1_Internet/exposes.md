@@ -90,7 +90,7 @@
 ### <font color="teal">14. La protection du consommateur sur Internet</font>
 - → Quels sont vos droits en cas d'achat en ligne (rétractation, garantie, litige) ?
 - → Donner un exemple d'arnaque courante et comment la repérer.
-- 
+
 ### <font color="teal">15. L'intelligence artificielle et la désinformation</font>
 - → Comment l'IA peut-elle être utilisée pour créer ou diffuser de fausses informations ?
 - → Quels outils permettent de vérifier une information en ligne ?
