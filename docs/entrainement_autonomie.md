@@ -24,6 +24,12 @@ ___
 
 ### **Programmation (python)**
 
+- **[La ressourcerie ForgeApp](https://ressourcerie.forge.apps.education.fr/?recherche=python)**
+  - Jettez un coup d'oeil ici, beaucoup de ressource en python (et d'autres !!)
+  
+- **[PyAlgo](https://pyalgo.forge.apps.education.fr/index.html)**
+  - Top pour les bases de python en NSI !!
+  
 - **[Learn Python](https://learnpython.org/)**
     - Simple à prendre en main.
 
