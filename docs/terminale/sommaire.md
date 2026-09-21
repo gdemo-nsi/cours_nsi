@@ -1,9 +1,11 @@
 # Terminale NSI
 
-Progression annuel : [Thèmes de l'année](progression_term.md)
+Progression annuel : [Thèmes de l'année](progression_term.md)  
+Fiche 📜 entrainement autonomie : [Fiche liste exercices python](../entrainement_autonomie.md)
 
 !!! tip "Thème en cours d'étude :"
     - [Révision python](Theme_0_Revisions_python/sommaire.md)
+          - [TNSI_0.3_Révisions_Listes](https://capytale2.ac-paris.fr/web/c/2625-11610812/mln){: target="_blank"}
 ___
 
 !!! note "Thèmes TNSI"

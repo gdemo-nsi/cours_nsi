@@ -80,9 +80,11 @@ nav:
           - Sommaire: premiere/Theme_10_Nom_du_theme/sommaire.md
   - Terminale:
       - Sommaire: terminale/sommaire.md
+      - Fiche exercices autonomies : entrainement_autonomie.md
       
       - Thème 0 - Révisions python :
         - Sommaire : terminale/Theme_0_Revisions_python/sommaire.md
+        - Synthese : terminale/Theme_0_Revisions_python/synthese.md
       - Thème 1 - POO :
           - Sommaire: terminale/Theme_1_POO/sommaire.md
           - Cours: terminale/Theme_1_POO/cours.md
