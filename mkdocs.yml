@@ -57,6 +57,7 @@ nav:
           - Sommaire: seconde/Theme_8_Nom_du_theme/sommaire.md
   - Première:
       - Sommaire: premiere/sommaire.md
+      - Présentation hebdo : premiere/presentation.md
       - Thème 1 - Représentation des données:
           - Cours: premiere/Theme_1_Representation_des_donnees/cours.md
           - Exercices: premiere/Theme_1_Representation_des_donnees/exercices.md
