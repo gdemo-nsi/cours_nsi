@@ -2,6 +2,8 @@
 
 Progression annuel : [Thèmes de l'année](progression_prem.md)
 
+[Rituel de présentation de métier / new technologique](presentation.md)
+
 !!! tip "Thèmes en cours d'étude :"
     - [T1 cours représentation données](Theme_1_Representation_des_donnees/cours.md)
 ___
