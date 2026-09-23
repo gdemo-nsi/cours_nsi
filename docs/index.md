@@ -3,8 +3,8 @@
 Bienvenue sur le dépot **Numérique et Sciences Informatiques** 🖥️🖲️.
 
 
-- [Programme de Première (NSI)](premiere/sommaire.md)
-- [Programme de Terminale (NSI)](terminale/sommaire.md)
+- [Programme de Première (1NSI)](premiere/sommaire.md)
+- [Programme de Terminale (TNSI)](terminale/sommaire.md)
 - [Fiche de travail en autonomie - NSI](entrainement_autonomie.md)
   ___
   

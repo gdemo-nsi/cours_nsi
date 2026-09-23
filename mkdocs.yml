@@ -61,8 +61,9 @@ nav:
       - Thème 1 - Représentation des données:
           - Cours: premiere/Theme_1_Representation_des_donnees/cours.md
           - Exercices: premiere/Theme_1_Representation_des_donnees/exercices.md
-      - Thème 2:
-          - Sommaire: premiere/Theme_2_Nom_du_theme/sommaire.md
+      - Thème 2 - Systèmes d'exploitation:
+          - Sommaire: premiere/Theme_2_systeme_exploitation/sommaire.md
+          - Exercices: premiere/Theme_2_systeme_exploitation/exercices.md
       - Thème 3:
           - Sommaire: premiere/Theme_3_Nom_du_theme/sommaire.md
       - Thème 4:

@@ -288,17 +288,14 @@ class Voiture :
         self.vitesse_max = vmax
         self.age = 2025 - self.annee
     
-    def petite_annonce(self) :
-        print("À vendre voiture", self.couleur, "de", self.annee,\
-             ", vitesse maximale", self.vitesse_max, "km/h.")
+    def klaxonner(self):
+        print("Je suis un voiture de couleur", self.couleur, "qui fait 'pouet pouet'")
 ```
-
-Remarque : le symbole ```\``` est utilisé ici pour couper une ligne trop longue.
 
 ```python
 >>> batmobile = Voiture(2036, "noire", 325)
->>> batmobile.petite_annonce()
-À vendre voiture noire de 2036 , vitesse maximale 325 km/h.
+>>> batmobile.kalxonner()
+"Je suis un voiture de couleur noire qui fait 'pouet pouet'"
 ```
 
 Que donne la commande ```dir``` pour notre objet ?
@@ -337,13 +334,10 @@ dir(batmobile)
      'age',
      'annee',
      'couleur',
-     'petite_annonce',
+     'klaxonner',
      'vitesse_max']
 
-
-
 On y retrouve donc à la fois les 4 attributs et l'unique méthode que nous avons créés pour notre objet.
-
 
 !!! example "Exercice 2"
     :writing_hand: Reprendre la classe de l'exercice précédent et rajouter une méthode ```distance()``` qui renvoie la distance du point par rapport à l'origine du repère (dans un repère orthonormé).

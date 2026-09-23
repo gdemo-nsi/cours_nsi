@@ -12,7 +12,7 @@ ___
     | N° | Thème |
     |---|-------|
     | 1 | [Représentation des données](Theme_1_Representation_des_donnees/cours.md) |
-    | 2 | [Systèmes exploitation](Theme_2_Nom_du_theme/sommaire.md) |
+    | 2 | [Systèmes exploitation](Theme_2_systeme_exploitation/sommaire.md) |
     | 3 | [Types construits](Theme_3_Nom_du_theme/sommaire.md) |
     | 4 | [Constructions élémentaires](Theme_4_Nom_du_theme/sommaire.md) |
     | 5 | [Architecture matérielle](Theme_5_Nom_du_theme/sommaire.md) |
