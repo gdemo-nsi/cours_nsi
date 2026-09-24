@@ -37,6 +37,21 @@ img.center {
   flex-shrink: 0;
 }
 
+/* Style sections .yml */
+.md-nav__item--section > .md-nav__link {
+  color: #3b4e94!important;
+  font-weight: 650;
+  text-transform: uppercase;
+  font-size: 0.63rem;
+  letter-spacing: 0.01em;
+}
+
+.md-nav__item--section > .md-nav__link--active {
+  color: #40916c;        
+  border-left: 3px solid #40916c;
+  padding-left: 0.5rem;
+}
+
 /* Exemple d'utilisation :  
 <div class="flex-row" markdown="1">
 <div class="flex-row flex-row-reverse" markdown="1"> reverse

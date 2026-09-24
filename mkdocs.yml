@@ -23,6 +23,7 @@ theme:
         name: Mode clair
   features:
     - navigation.tabs
+    - navigation.sections
     - toc.integrate
     - content.code.copy
 

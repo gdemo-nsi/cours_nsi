@@ -6,6 +6,7 @@ Progression annuel : [Thèmes de l'année](progression_prem.md)
 
 !!! tip "Thèmes en cours d'étude :"
     - [T1 cours représentation données](Theme_1_Representation_des_donnees/cours.md)
+    - Exercices sur les opérations binaires : [1NSI_1.2_exercice_operations_sur_binaire](https://capytale2.ac-paris.fr/web/c/f535-11625167/mln){: target="_blank"}
 ___
 
 !!! note "Thèmes 1NSI"
