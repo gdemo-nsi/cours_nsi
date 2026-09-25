@@ -12,7 +12,9 @@
     - Le support doit être **partagé** aux membres du groupe.
     - L'exposé ne doit pas durer plus de **5 minutes**.
 
-    🚨 &rarr; **Mode de rendu** : Vous devez déposer votre exposé sur drive : &rarr; [Lien vers drive nuage.](https://nuage13.apps.education.fr/index.php/s/mmnfb2FMyqcXRPH){: target="_blank"} &larr;
+    🚨 &rarr; **Mode de rendu** : Vous devez déposer votre exposé sur drive : &rarr; &rarr; [Lien vers drive nuage.](https://nuage13.apps.education.fr/index.php/s/mmnfb2FMyqcXRPH){: target="_blank"} &larr; &larr;  
+
+
     🚨 &rarr; Il doit **impérativement** être renommé :  
     <center>``SECONDE_[*votre seconde*]_GP_[*votre groupe*]_PRENOM_NOM(eleve1)_PRENOM_NOM(eleve2)``</center>
     Ainsi, si je m'appelle **Bob Dupont**, que je suis en **seconde 1**, je suis du **groupe 2** et que j'ai fais le diaporama avec **Alice Duchamps**, le nom sera :  
@@ -26,8 +28,8 @@
     |Consigne|/ points|
     |---|---:|
     |Qualité du support (*pas trop de texte*, *diapositives lisibles*):| /3|
-    |Présentation oral (*pas de lecture*, *débit de parole ni trop rapide, ni trop lent*, *vocabulaire employé*):| /3|
-    |Contenu de l'exposé (*points pertinants*, *exemple de situation*):|/2|
+    |Présentation oral (*pas de lecture*, *débit de parole ni trop rapide, ni trop lent*, *vocabulaire employé*):| /2|
+    |Contenu de l'exposé (*points pertinants*, *exemple de situation*):|/3|
     |Répartition du temps de parole :| /1|
     |Exposé correctement renommé :| /1|
     |Total :|/10|
