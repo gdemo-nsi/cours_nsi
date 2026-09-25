@@ -12,7 +12,7 @@
     - Le support doit être **partagé** aux membres du groupe.
     - L'exposé ne doit pas durer plus de **5 minutes**.
 
-    🚨 &rarr; **Mode de rendu** : Vous devez déposer votre exposé sur drive : [Lien vers drive nuage.](https://nuage13.apps.education.fr/index.php/s/mmnfb2FMyqcXRPH)
+    🚨 &rarr; **Mode de rendu** : Vous devez déposer votre exposé sur drive : &rarr; [Lien vers drive nuage.](https://nuage13.apps.education.fr/index.php/s/mmnfb2FMyqcXRPH){: target="_blank"} &larr;
     🚨 &rarr; Il doit **impérativement** être renommé :  
     <center>``SECONDE_[*votre seconde*]_GP_[*votre groupe*]_PRENOM_NOM(eleve1)_PRENOM_NOM(eleve2)``</center>
     Ainsi, si je m'appelle **Bob Dupont**, que je suis en **seconde 1**, je suis du **groupe 2** et que j'ai fais le diaporama avec **Alice Duchamps**, le nom sera :  
