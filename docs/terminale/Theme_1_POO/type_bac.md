@@ -301,7 +301,7 @@
 -->
 
 !!! example "Exercice 1"
-    Exercice 2 Partie A du sujet [Métropole Septembre 2022](../../T6_Annales/data/2022/2022_Metropole_J1.pdf){. target="_blank"}
+    Exercice 2 Partie A du sujet [Métropole Septembre 2022](../../T6_Annales/data/2022/2022_Metropole_Septembre.pdf){. target="_blank"}
 
 
     ??? success "Correction Q1.a" 
@@ -316,7 +316,7 @@
 
 
 
-    ??? success "Correction Q1.c\" 
+    ??? success "Correction Q1.c" 
         ```python
         def surface(self):
             return self.sejour.sup + self.ch1.sup + self.ch2.sup
