@@ -307,7 +307,7 @@ class Voiture :
 "Je suis un voiture de couleur noire qui fait 'pouet pouet'"
 ```
 
-Que donne la commande ```dir``` pour notre objet ?
+Que donne la commande ```dir``` pour notre instance ?
 
 
 ```python
