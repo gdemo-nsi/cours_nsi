@@ -65,8 +65,10 @@ nav:
       - Thème 2 - Systèmes d'exploitation:
           - Sommaire: premiere/Theme_2_systeme_exploitation/sommaire.md
           - Exercices: premiere/Theme_2_systeme_exploitation/exercices.md
-      - Thème 3:
-          - Sommaire: premiere/Theme_3_Nom_du_theme/sommaire.md
+      - Thème 3 - Types construits:
+          - Sommaire: premiere/Theme_3_types_construits/sommaire.md
+          - Cours: premiere/Theme_3_types_construits/cours_variable.md
+          - Exercices: premiere/Theme_3_types_construits/exercices.md
       - Thème 4:
           - Sommaire: premiere/Theme_4_Nom_du_theme/sommaire.md
       - Thème 5:
