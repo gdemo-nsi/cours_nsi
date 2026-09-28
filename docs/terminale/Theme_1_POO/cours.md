@@ -261,6 +261,15 @@ Bien sûr, on peut créer une autre voiture en suivant le même principe :
 >>> batmobile.couleur
 'noire'
 ```
+!!! tip Instance :heart:
+    Lorsque vous créez un objet depuis une classe, on parle d'instance !!!  
+    Par exemple, `batmobile` est une **instance** de la classe `Voiure`.  
+    ```python
+    # Une instance
+    batmobile = Voiture(2036, "noire", 325)
+    # Une autre instance:
+    logan = Voiture(2007, "bleu dur", 82)
+    ```
 
 !!! example "Exercice 1"
  

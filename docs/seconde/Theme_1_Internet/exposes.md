@@ -12,7 +12,7 @@
     - Le support doit être **partagé** aux membres du groupe.
     - L'exposé ne doit pas durer plus de **5 minutes**.
 
-    🚨 &rarr; **Mode de rendu** : Vous devez déposer votre exposé sur drive : &rarr; &rarr; [Lien vers drive nuage.](https://nuage13.apps.education.fr/index.php/s/mmnfb2FMyqcXRPH){: target="_blank"} &larr; &larr;  
+    🚨 &rarr; **Mode de rendu** : Vous devez déposer votre exposé en cliquant sur ce lien: &rarr; &rarr; [Lien vers drive nuage.](https://nuage13.apps.education.fr/index.php/s/mmnfb2FMyqcXRPH){: target="_blank"} &larr; &larr;  
 
 
     🚨 &rarr; Il doit **impérativement** être renommé :  
