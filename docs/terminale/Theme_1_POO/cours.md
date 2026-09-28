@@ -532,13 +532,15 @@ Ce type de méthode s'appelle un ```getter```.
             <th style="font-size: 1.3em; text-align:center;">Objet</th>
             <th style="font-size: 1.3em; text-align:center;">Attribut</th>
             <th style="font-size: 1.3em; text-align:center;">Méthode</th>
+            <th style="font-size: 1.3em; text-align:center;">Instance</th>
         </tr>
         <tr>
             <td style="font-weight: bold; font-size: 1.2em; text-align:center;">Définition</td>
             <td style="text-align:center;">Structure de données définissant une catégorie d'objets de manière générique</td>
-            <td style="text-align:center;">Instance concrète d'une classe</td>
+            <td style="text-align:center;">Objet générique, qui a des attributs et des méthodes</td>
             <td style="text-align:center;">Variable associée à un objet</td>
             <td style="text-align:center;">Fonction définie dans une classe, qui agit sur les objets de cette classe</td>
+            <td style="text-align:center;">En programmation, une instance est <b>un</b> objet d'une classe, auquel on lui confini un état initial</td>
         </tr>
         <tr>
             <td style="font-weight: bold; font-size: 1.2em; text-align:center;">Comparatif</td>
@@ -546,5 +548,6 @@ Ce type de méthode s'appelle un ```getter```.
             <td style="text-align:center;">Similaire à une variable créée à partir d’un type personnalisé</td>
             <td style="text-align:center;">Similaire à une variable classique, mais attachée à un objet</td>
             <td style="text-align:center;">Similaire à une fonction, mais liée à un objet</td>
+            <td style="text-align:center;">Une classe voiture peut avoir plusieurs instance: "Punto, Logan, Kangoo, etc..."</td>
         </tr>
     </table>
