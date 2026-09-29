@@ -1,8 +1,10 @@
 # Première NSI
 
-Progression annuel : [Thèmes de l'année](progression_prem.md)
+Progression annuel : &rarr; [Thèmes de l'année](progression_prem.md)
 
-[Rituel de présentation de métier / new technologique](presentation.md)
+
+&rarr; [Présentation hebdomadaire métier / new technologique](presentation.md)  
+&rarr; [Lien vers date de passages](https://docs.google.com/spreadsheets/d/1r_jxA1FsGLNF6cWuzgEIZn_pZYjasf48E27_JuJTSrQ/edit?usp=sharing)
 
 !!! tip "Thèmes en cours d'étude :"
     - [T1 cours représentation données](Theme_1_Representation_des_donnees/cours.md)

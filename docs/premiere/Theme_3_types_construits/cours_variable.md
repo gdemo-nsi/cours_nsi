@@ -15,39 +15,66 @@
     ![alt text](data/Capture d'écran 2026-09-28 185846.png){:.center width=75%}
 
 
-... La suite au prochain cours
-<!--
+Avant de commencer, il faut différencier deux concepts fondamentaux. Chaque, IDE possède un éditeur de texte et une console :  
+
+![alt text](data/thonny.png){:.center width=70%}
+
+!!! danger  "**<font color="crimson">Editeur de texte </font>**"
+
+    C'est l'endroit ou vous pouvez modifier, créer vos programmes en python.
+
+!!! danger  "**<font color="navy">Console </font>**"
+
+    C'est ici que l'affiche du programme se produit. Vous pouvez également tester des instructions simples.
 
 # 1.1 Les instructions Python
+
+Dans la console, écrivez ces instructions simples :  
+```python
+- print("Hello world")
+- 3 + 2
+- 12 - 73
+- 894 * 4577
+- 24 / 3
+- 23 // 2
+```
+Vous pouvez directement afficher du texte, où faire des calculs.
+
 # 2.1 Variables
 
 ## A. Pourquoi des variables ?
 
 ### A.1 Introduction
 
+Imaginez votre chambre. Normalement, chaque objet à une place précise. Un ordinateur va attribuer une "place précise" (*qu'on appelle allocation mémoire*) à un nombre, texte, objet, etc. &rarr; **une variable**.  
+Vous pouvez nommer cette **variable** comme bon vous semble et lui mettre la valeur de votre choix.  
 
-De la même manière que dans votre chambre chaque objet a (normalement) une place attitrée, un ordinateur (dont le rôle peut se résumer à «manipuler très vite des données») va assigner à chaque objet une place particulière dans son espace-mémoire. Et il lui assignera un nom (choisi par l'utilisateur) afin de pouvoir accéder à cette valeur.
+> Par exemple : je souhaite stocker la valeur "poster de Kurt Cobain" dans une variable que je vais nommer `poster`.  
+> Ainsi en python ça donne :  
+```python
+poster = "poster de Kurt Cobain"
+```
+> :writing_hand: Créez votre poster dans la console et affichez le !
 
-Nous ne rentrerons pas dans le détail du processus d'allocation-mémoire, nous retiendrons juste ceci : pour manipuler un objet, il faut qu'il déjà qu'il ait un nom. C'est par cela que nous allons commencer :
 
-!!! info "Première variable"
-    Considérons la phrase *«nous allons stocker le prix du spectacle dans une variable  ```a```, qui vaudra au départ 32.»*
+!!! info "Problème de variable"
+    **> Considérons la phrase *«nous allons stocker le prix du spectacle dans une variable  ```a```, qui vaudra au départ 32.»***
 
-Il y a plusieurs commentaires à faire sur une telle annonce :
+    Il y a plusieurs commentaires à faire sur une telle annonce :
 
-- Dans le problème que l'on cherche à modéliser, le prix du spectacle est une donnée importante, qui va peut-être évoluer (ou pas !).
-- Pour la manipuler plus simplement, on va la désigner par un nom, le **nom de la variable** (ici, le nom ```a``` est particulièrement mal choisi, voir D. Bonnes pratiques de nommage)
-- Comme en mathématiques, le nom de cette variable va désigner une valeur qui peut changer (*varier*) au cours du temps (encore une fois : ou pas).
-- Cette valeur est fixée *au départ* à 32. On dira en informatique qu'elle est *initialisée* à 32.
-- Si cette valeur ne change pas, on dira qu'elle est constante. Cela peut paraître inutile de donner un nom à quelque chose qui ne change pas, mais cela est très utile de définir les constantes au début d'un programme. 
+    - Dans le problème que l'on cherche à modéliser, le prix du spectacle est une donnée importante, qui va peut-être évoluer (ou pas !).
+    - Pour la manipuler plus simplement, on va la désigner par un nom, le **nom de la variable** (ici, le nom ```a``` est particulièrement mal choisi, voir D. Bonnes pratiques de nommage)
+    - Comme en mathématiques, le nom de cette variable va désigner une valeur qui peut changer (*varier*) au cours du temps (encore une fois : ou pas).
+    - Cette valeur est fixée *au départ* à 32. On dira en informatique qu'elle est *initialisée* à 32.
+    - Si cette valeur ne change pas, on dira qu'elle est constante. Cela peut paraître inutile de donner un nom à quelque chose qui ne change pas, mais cela est très utile de définir les constantes au début d'un programme. 
 
-### A.2 On code !
+### A.2 A vos consoles !
 La phrase précédente donnera donc lieu à la ligne Python suivante :
 
 ```python
 >>> a = 32
 ```
-!!! warning "Attention"
+!!! danger "Affectation :heart:"
     Le symbole ```=``` ici utilisé n'a **rien à voir** avec le symbole = utilisé en mathématique. On dit qu'on a **affecté** à ```a``` la valeur 32, et il faut se représenter mentalement cette action par l'écriture ```a ← 32```.
 
 !!! note "Comparaison de la syntaxe dans différents langages"
@@ -100,7 +127,7 @@ Une fois la valeur 32 stockée dans la variable ```a```, on peut alors utiliser 
 32
 >>> a + 5
 37
->>> b
+>>> a + b
 Traceback (most recent call last):
   File "<pyshell>", line 1, in <module>
 NameError: name 'b' is not defined
@@ -129,8 +156,9 @@ va provoquer chez l'ordinateur le comportement suivant :
 
 Cette explication est suffisante pour aborder la notion de variable : c'est un mot (ou une lettre) qui va désigner une valeur. 
 
+### B.2 Une réalité bien plus complexe...
 
-??? warning "Partie difficile (optionnelle)"
+??? warning "B.2 Partie optionnelle - **Allocation mémoire**"
     *La métaphore du tiroir est malheureusement un peu trop simplificatrice.*
 
     ### B.2 Une réalité bien plus complexe...
@@ -224,15 +252,15 @@ Observons l'instruction
 
 #### B.3.1 Étape 1 : **l'évaluation**
 
-Python va prendre la partie à droite du signe égal et va l'évaluer, ce qui signifie qu'il va essayer de lui donner une valeur. Dans nos exemples, cette valeur sera numérique, mais elle peut être d'un autre type (voir plus loin)
+Python va prendre la partie à droite du signe égal et va l'évaluer, ce qui signifie qu'il va essayer de lui donner une valeur. Dans nos exemples, cette valeur sera numérique, mais elle peut être d'un autre type (*voir plus loin*).
 
 
-Ici, Python effectue le calcul 2 + 3 et l'évalue à la valeur 5.
+> &rarr; Ici, Python effectue le calcul 2 + 3 et l'évalue à la valeur 5.
 
 #### B.3.2 Étape 2 : **l'affectation**
 Une fois évaluée l'expression à droite du signe =, il ne reste plus qu'à l'affecter à la variable (déjà existante ou pas) située à gauche du signe =.
 
-Comme expliqué précédemment, un «lien» est fait entre le nom de la variable et l'adresse-mémoire qui contient la valeur évaluée.
+Comme expliqué précédemment, un «lien» est fait entre le nom de la variable et l'adresse-mémoire qui contient la valeur évaluée.  
 ```a``` sera donc lié à la valeur 5. Plus simplement, on dira que «```a``` vaut 5» 
 
 #### B.3.2 L'incrémentation d'une variable.
@@ -283,182 +311,161 @@ Cette procédure d'**incrémentation** est très très classique, il faut la ma�
     ```
     Cette syntaxe peut se ranger dans la catégorie des **sucres syntaxiques** : c'est bien de la connaître, c'est amusant de s'en servir, mais son utilisation n'est en rien obligatoire et peut avoir un effet néfaste, celui d'oublier réellement ce qu'il se passe derrière.
 
-!!! example "{{ exercice() }}"
-    Écrire le code «classique» et le code «Pythonesque» pour l'instruction suivante :
+!!! example "Exercice 1"
+    :writing_hand: Écrire le code pour l'instruction suivante :
 
-    On initialise une variable ```score``` à 100 et on l'augmente de 15.
+    1. On initialise une variable ```score``` à 100.
+    2. On l'augmente ensuite, de 15.
 
-    {{
-    correction(True,
-    """
-    ??? success \"Correction\" 
+
+    ??? success "Correction" 
         ```python
         >>> score = 100
         >>> score = score + 15
-        ```
-        ou encore 
-        ```python
-        >>> score = 100
-        >>> score += 15
+        >>> score
+        115
         ```       
-    """
-    )
-    }}
-        
 
-        
+!!! example "Exercice 2"
 
-!!! example "{{ exercice() }}"
+    :writing_hand: Écrire le code de l'instruction suivante :
 
-    Écrire le code «classique» et le code «Pythonesque» pour l'instruction suivante :
+    1. On initialise une variable ```cellule``` à 1.
+    2. On la multiplie par 2.
+    3. On l'affiche.
+    4. On la multiplie par 2 de nouveau.
+    5. On l'affiche à nouveau.
 
-    On initialise une variable ```cellule``` à 1 et on la multiplie par 2.
 
-    {{
-    correction(True,
-    """
-    ??? success \"Correction\" 
+    ??? success "Correction" 
         ```python
         >>> cellule = 1
         >>> cellule = cellule * 2
+        >>> cellule
+        2
+        >>> cellule = cellule * 2
+        >>> cellule
+        4
         ```
-        ou bien
+           
+
+!!! example "Exercice 3"
+
+    :wrinting_hand: Écrire le code de l'instruction suivante :
+
+    1. On initialise une variable ```capital``` à 100.
+    2. On lui enlève 5%.
+    3. On l'affiche
+   
+    *"M'sieur comment on calcul un pourcentage ???"* &rarr; faites travailler vos cerveaux, où chercher la formule sur internet.
+
+
+    ??? success "Correction" 
         ```python
-        >>> cellule = 1
-        >>> cellule *= 2
-        ```        
-    """
-    )
-    }}
-        
+        >>> capital = 100
+        >>> capital = capital - (capital * 5/100) # Note, les parenthèses ne sont pas obligatoires, python connait la priorité des opérations.
+        >>> capital
+        95.0
 
-        
-
-!!! example "{{ exercice() }}"
-
-    Écrire le code «classique» et le code «Pythonesque» pour l'instruction suivante.
-
-    On initialise une variable ```capital``` à 1000 et on lui enlève 5%.
-
-    {{
-    correction(True,
-    """
-    ??? success \"Correction\" 
-        ```python
-        >>> capital = 1000
-        >>> capital = capital - capital * 5/100
         ```
-        ou bien
-        ```python
-        >>> capital = 1000
-        >>> capital *= 0.95
-        ```    
-    """
-    )
-    }}
-        
 
-        
+### B.3.3 L'échange de variables
+??? warning "B.3.3 Partie optionnelle - **Echange de variables**"
 
+    ### B.3.3 L'échange de variables
+    Après l'incrémentation, une autre technique de base reviendra fréquemment dans nos codes : **l'échange de variables**.
 
-#### B.3.3 L'échange de variables
-Après l'incrémentation, une autre technique de base reviendra fréquemment dans nos codes : **l'échange de variables**.
+    Imaginons les variables suivantes :
 
-Imaginons les variables suivantes :
-
-```python
->>> a = 3
->>> b = 5
-```
-Le but est d'échanger les valeurs de ```a``` et de ```b```.
-
-
-▸ **Méthode naïve**
-
-```python
->>> a = b
->>> b = a
-```
-
-Que valent ```a``` et ```b``` maintenant ?
-
-Malheureusement :
-```python
->>> a
-5
->>> b
-5
->
-```
-
-La variable ```a``` a été écrasée dès qu'on lui a donné la valeur de la variable ```b```.
-
-Comment la préserver ?
-
-
-
-
-La situation est similaire au problème suivant : comment échanger le contenu de ces deux verres ?
-
-![image](data/verres.png){: .center width=20%}
-
-La méthode est évidente : il nous faut un troisième verre.
-
-Nous allons faire de même pour nos variables. Nous allons utiliser une variable **temporaire** (on parle aussi de variable **tampon**) pour conserver la mémoire de la valeur de ```a``` (par exemple) avant que celle-ci ne se fasse écraser :
-
-```python
->>> a = 3
->>> b = 5
->>> temp = a
->>> a = b
->>> b = temp
-```
-
-Vous pouvez vérifier maintenant que les valeurs de ```a``` et de ```b``` ont bien été échangées.
-
-
-
-!!! info "Syntaxe classique et syntaxe Pythonesque :heart:"
-    L'échange de deux variables ```a``` et de ```b``` s'écrit donc :
     ```python
+    >>> a = 3
+    >>> b = 5
+    ```
+    Le but est d'échanger les valeurs de ```a``` et de ```b```.
+
+
+    ▸ **Méthode naïve**
+
+    ```python
+    >>> a = b
+    >>> b = a
+    ```
+
+    Que valent ```a``` et ```b``` maintenant ?
+
+    Malheureusement :
+    ```python
+    >>> a
+    5
+    >>> b
+    5
+    >
+    ```
+
+    La variable ```a``` a été écrasée dès qu'on lui a donné la valeur de la variable ```b```.
+
+    Comment la préserver ?
+
+
+
+
+    La situation est similaire au problème suivant : comment échanger le contenu de ces deux verres ?
+
+    ![image](data/verres.png){: .center width=20%}
+
+    La méthode est évidente : il nous faut un troisième verre.
+
+    Nous allons faire de même pour nos variables. Nous allons utiliser une variable **temporaire** (on parle aussi de variable **tampon**) pour conserver la mémoire de la valeur de ```a``` (par exemple) avant que celle-ci ne se fasse écraser :
+
+    ```python
+    >>> a = 3
+    >>> b = 5
     >>> temp = a
     >>> a = b
     >>> b = temp
     ```
-    Mais il existe aussi une syntaxe particulière à Python, bien plus courte :
 
-    ```python
-    >>> a, b = b, a
-    ```
-    C'est de nouveau un *sucre syntaxique*. Cette syntaxe nous dispense de créer nous-même une troisième variable. Mais pas de miracle : en interne, Python crée lui-même cette variable temporaire. La simultanéité n'existe pas en informatique.
+    Vous pouvez vérifier maintenant que les valeurs de ```a``` et de ```b``` ont bien été échangées.
 
 
 
-!!! example "{{ exercice() }}"
-
-    Une petite erreur s'est glissée à Poudlard :
-    ```python
-    >>> maison_Harry = "Serpentard"
-    >>> maison_Malfoy =  "Gryffondor"
-    ```
-    Corriger cette erreur, de deux manières différentes.
-
-    {{
-    correction(True,
-    """
-    ??? success \"Correction\" 
+    !!! info "Syntaxe classique et syntaxe Pythonesque :heart:"
+        L'échange de deux variables ```a``` et de ```b``` s'écrit donc :
         ```python
-        >>> t = maison_Harry
-        >>> maison_Harry = maison_Malfoy
-        >>> maison_Malfoy = t
+        >>> temp = a
+        >>> a = b
+        >>> b = temp
         ```
-        ou plus rapidement :
+        Mais il existe aussi une syntaxe particulière à Python, bien plus courte :
+
         ```python
-        >>> maison_Harry, maison_Malfoy = maison_Malfoy, maison_Harry
-        ```        
-    """
-    )
-    }}
+        >>> a, b = b, a
+        ```
+        C'est de nouveau un *sucre syntaxique*. Cette syntaxe nous dispense de créer nous-même une troisième variable. Mais pas de miracle : en interne, Python crée lui-même cette variable temporaire. La simultanéité n'existe pas en informatique.
+
+
+
+    !!! example "Exercice 4"
+
+        Une petite erreur s'est glissée à Poudlard :
+        ```python
+        >>> maison_Harry = "Serpentard"
+        >>> maison_Malfoy =  "Gryffondor"
+        ```
+        Corriger cette erreur, de deux manières différentes.
+
+
+        ??? success "Correction" 
+            ```python
+            >>> temp = maison_Harry
+            >>> maison_Harry = maison_Malfoy
+            >>> maison_Malfoy = temp
+            ```
+            ou plus rapidement :
+            ```python
+            >>> maison_Harry, maison_Malfoy = maison_Malfoy, maison_Harry
+            ```        
+
         
 
         
@@ -473,22 +480,23 @@ Sauf les maisons de Poudlard, qui sont des ~~mots~~ chaînes de caractères.
 
 Pour différencier la nature de ce que peut contenir une variable, on parle alors de **type de variable**.
 
-En voici quelques uns, que nous découvrirons au fil de l'année :
+> Python est un langage non typé, nous n'avons pas besoin de préciser quelle est le type de la variable, il le reconnait tout seul.
 
 
-!!! abstract "Types de base"
+!!! tip ":heart: :heart: :heart: Types de base :heart: :heart: :heart:"
     Voici les types Python les plus fréquemment utilisés cette année:
 
     |Type Python| Traduction | Exemple|
     |:-:|:-:|:-:|
-    |`int`|entier|`#!python 42`|
-    |`float`|flottant (décimal)|`#!python 3.1416`|
-    |`str`|chaîne de caractères (string)|`#!python "NSI"`|
-    |`bool`|booléen (True ou False)|```#!python True```|
-    |`tuple`|p-uplet| `#!python (255, 127, 0)`|
-    |`list`|liste|`#!python [0, 1, 2, 3, 4, 5]`|
-    |`dict`|dictionnaire|`#!python {'Homer':43, 'Marge':41, 'Bart':12, 'Lisa':10, 'Maggie':4}`|
-    |`function`|fonction| `#!python print`|
+    |`int`|entier|`42`|
+    |`float`|flottant (décimal)| 3.1416`|
+    |`str`|chaîne de caractères (string)|` "NSI"`|
+    |`bool`|booléen (True ou False)|``` True```|
+    |`function`|fonction| ` print`|
+    |`tuple`|p-uplet| ` (255, 127, 0)`|
+    |`list`|liste|` [0, 1, 2, 3, 4, 5]`|
+    |`dict`|dictionnaire|` {'Homer':43, 'Marge':41, 'Bart':12, 'Lisa':10, 'Maggie':4}`|
+    |`function`|fonction| ` print`|
 
 
 Comment connaître le type d'une variable ?
@@ -499,41 +507,64 @@ Il suffit dans la console d'utiliser la fonction `type`.
 >>> type(a)
 <class 'int'>
 ```
+!!! exercice "Exercice 5"
+    :writing_hand: Quel est le type des variables suivantes ? Vous pouvez tester avec `type()` en cas de doute.  
+    ```python
+    a = 32
+    b = 3.2
+    c = 3,2
+    d = "Salut"
+    e = "894"
+    f = True
+    g = "False"
+    ```
+    ??? success "Correction"
+        a : `int`  
+        b : `float`  
+        c : `tuple`  
+        d : `str`  
+        e : `str`  
+        f : `Bool`  
+        g : `str`
 
+<!--
 ### C.1 Python et le typage dynamique
 
-Jusqu'à présent, nous ne nous sommes pas occupés de préciser à Python le type de notre variable.
+??? warning "C.1 Partie optionnelle - **Typage dynamique**"
+    ### C.1 Python et le typage dynamique
 
-```python
-a = 3
-```
+    Jusqu'à présent, nous ne nous sommes pas occupés de préciser à Python le type de notre variable.
 
-Mais dans certains langages, c'est obligatoire. En C par exemple, il faut écrire :
+    ```python
+    a = 3
+    ```
 
-```C
-int a = 3;
-```
-Cela signifie (pour le langage C) que notre variable ```a``` n'aura pas le droit de contenir autre chose qu'un nombre entier.
+    Mais dans certains langages, c'est obligatoire. En C par exemple, il faut écrire :
 
-Si on écrit ensuite
-```C
-a = "test";
-```
+    ```C
+    int a = 3;
+    ```
+    Cela signifie (pour le langage C) que notre variable ```a``` n'aura pas le droit de contenir autre chose qu'un nombre entier.
 
-Le compilateur C renverra une erreur : on ne peut pas stocker une chaîne de caractères dans une variable qu'on a créée comme étant de type entier.
+    Si on écrit ensuite
+    ```C
+    a = "test";
+    ```
 
-Et en Python ?
+    Le compilateur C renverra une erreur : on ne peut pas stocker une chaîne de caractères dans une variable qu'on a créée comme étant de type entier.
 
-```python
->>> a = 3
->>> type(a)
-<class 'int'>
->>> a = "test"
->>> type(a)
-<class 'str'>
-```
+    Et en Python ?
 
-Python a changé tout seul le type de notre variable, sans intervention. On parle de **typage dynamique**.
+    ```python
+    >>> a = 3
+    >>> type(a)
+    <class 'int'>
+    >>> a = "test"
+    >>> type(a)
+    <class 'str'>
+    ```
+
+    Python a changé tout seul le type de notre variable, sans intervention. On parle de **typage dynamique**.
 
 
 
@@ -553,18 +584,8 @@ Pour nommer correctement une variable, il existe des règles à respecter.
     
     - le nom de la variable **ne doit pas** commencer par un chiffre
     - le nom de la variable **ne doit pas** contenir d'espace
-    - le nom de la variable **ne doit pas** être un mot-clé du langage.
+    - le nom de la variable **ne doit pas** être un mot-clé du langage (par ex. `min` et `max` ne peuvent pas être des variables).
 
-    ??? info "Liste des mots-clés réservés par Python"
-
-        <p align="center">
-        <table>
-            <tr><td>and</td><td>as </td><td>assert	</td><td>break</td><td>	class</td><td>	continue</td><td>	def</td><td>	del</td></tr> 
-            <tr><td>elif</td><td>	else</td><td>	except</td><td> False </td><td> finally	</td><td>for</td><td>	from</td><td>	global  </td></tr>
-            <tr> <td> if </td><td>	import</td><td>	in</td><td>	is	</td><td>lambda	</td><td>None </td><td>not </td><td>	or</td></tr>
-            <tr><td> pass </td><td>raise</td><td>	return</td><td>	True </td><td>try	</td><td>while</td><td>	with	</td><td>yield </td></tr>
-        </table>
-        </p>
 
 
 
