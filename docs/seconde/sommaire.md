@@ -19,3 +19,6 @@ ___
     | 6 | [Photo numérique](Theme_6_Nom_du_theme/sommaire.md) |
     | 7 | [Informatique embarquée](Theme_7_Nom_du_theme/sommaire.md) |
     | 8 | [Thème 8](Theme_8_Nom_du_theme/sommaire.md) |
+
+
+&rarr; [Lien vers vidéo SNT - NSi](https://docs.google.com/document/d/1M5bxEdTRHlc9ILjBcgY-R71jST0_Jp3zj42rKnUL-fY/edit?usp=sharing){: target ="_blank"}
