@@ -29,7 +29,7 @@ Avant de commencer, il faut différencier deux concepts fondamentaux. Chaque, ID
 
 # 1.1 Les instructions Python
 
-Dans la console, écrivez ces instructions simples :  
+> :writing_hand: dans la console, écrivez ces instructions simples :  
 ```python
 - print("Hello world")
 - 3 + 2
@@ -46,15 +46,15 @@ Vous pouvez directement afficher du texte, où faire des calculs.
 
 ### A.1 Introduction
 
-Imaginez votre chambre. Normalement, chaque objet à une place précise. Un ordinateur va attribuer une "place précise" (*qu'on appelle allocation mémoire*) à un nombre, texte, objet, etc. &rarr; **une variable**.  
+Imaginez votre armoire. Normalement, chaque vêtement à une place précise. Un ordinateur va attribuer une "place précise" (*qu'on appelle allocation mémoire*) à un nombre, texte, objet, etc. &rarr; **une variable**.  
 Vous pouvez nommer cette **variable** comme bon vous semble et lui mettre la valeur de votre choix.  
 
-> Par exemple : je souhaite stocker la valeur "poster de Kurt Cobain" dans une variable que je vais nommer `poster`.  
+> Par exemple : je souhaite stocker la valeur "chaussettes rouges" dans une variable que je vais nommer `tiroir`.  
 > Ainsi en python ça donne :  
 ```python
-poster = "poster de Kurt Cobain"
+tiroir = "chaussettes rouges"
 ```
-> :writing_hand: Créez votre poster dans la console et affichez le !
+> :writing_hand: Créez votre tiroir dans la console et affichez le !
 
 
 !!! info "Problème de variable"
@@ -65,7 +65,7 @@ poster = "poster de Kurt Cobain"
     - Dans le problème que l'on cherche à modéliser, le prix du spectacle est une donnée importante, qui va peut-être évoluer (ou pas !).
     - Pour la manipuler plus simplement, on va la désigner par un nom, le **nom de la variable** (ici, le nom ```a``` est particulièrement mal choisi, voir D. Bonnes pratiques de nommage)
     - Comme en mathématiques, le nom de cette variable va désigner une valeur qui peut changer (*varier*) au cours du temps (encore une fois : ou pas).
-    - Cette valeur est fixée *au départ* à 32. On dira en informatique qu'elle est *initialisée* à 32.
+    - Cette valeur est fixée *au départ* à 32. On dira en informatique qu'elle est **initialisée** à 32.
     - Si cette valeur ne change pas, on dira qu'elle est constante. Cela peut paraître inutile de donner un nom à quelque chose qui ne change pas, mais cela est très utile de définir les constantes au début d'un programme. 
 
 ### A.2 A vos consoles !
@@ -77,7 +77,7 @@ La phrase précédente donnera donc lieu à la ligne Python suivante :
 !!! danger "Affectation :heart:"
     Le symbole ```=``` ici utilisé n'a **rien à voir** avec le symbole = utilisé en mathématique. On dit qu'on a **affecté** à ```a``` la valeur 32, et il faut se représenter mentalement cette action par l'écriture ```a ← 32```.
 
-!!! note "Comparaison de la syntaxe dans différents langages"
+??? note "Comparaison de la syntaxe dans différents langages"
 
     === "Python"
 
@@ -252,7 +252,7 @@ Observons l'instruction
 
 #### B.3.1 Étape 1 : **l'évaluation**
 
-Python va prendre la partie à droite du signe égal et va l'évaluer, ce qui signifie qu'il va essayer de lui donner une valeur. Dans nos exemples, cette valeur sera numérique, mais elle peut être d'un autre type (*voir plus loin*).
+Python va prendre la partie à droite du signe égal et va l'évaluer, ce qui signifie qu'il va essayer de lui donner une valeur. Dans nos exemples, cette valeur sera numérique, mais elle peut être d'un autre *type*.
 
 
 > &rarr; Ici, Python effectue le calcul 2 + 3 et l'évalue à la valeur 5.
@@ -272,13 +272,18 @@ Imaginons une variable appelée ```compteur```. Au démarrage de notre programme
 >>> compteur = 0
 ```
 
-Considérons qu'à un moment du programme, cette variable doit être modifiée, par exemple en lui ajoutant 1.
 
-En Python, cela s'écrira :
+> :writing_hand: à votre avis, comment faire pour modifier cette variable pour lui ajouter 1 ?
 
-```python
->>> compteur = compteur + 1
-```
+??? Success "Correction"
+    En Python, cela s'écrira :
+    ```python
+    >>> compteur = compteur + 1
+    ```
+    Et non :
+        ```python
+    >>> compteur +1
+    ```
 
 Observée avec des yeux de mathématicien, la précédente instruction est une horreur.
 

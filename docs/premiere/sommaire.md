@@ -4,7 +4,7 @@ Progression annuel : &rarr; [Thèmes de l'année](progression_prem.md)
 
 
 &rarr; [Présentation hebdomadaire métier / new technologique](presentation.md)  
-&rarr; [Lien vers date de passages](https://docs.google.com/spreadsheets/d/1r_jxA1FsGLNF6cWuzgEIZn_pZYjasf48E27_JuJTSrQ/edit?usp=sharing)
+&rarr; [Lien vers ordre de passage ](https://docs.google.com/spreadsheets/d/1Zw8ExMJ7VGeOpkh9FcD2wdSFKX-o3I1kvgfNcr00cUg/edit?usp=sharing){: target="_blank"}
 
 !!! tip "Thèmes en cours d'étude :"
     - [T1 cours représentation données](Theme_1_Representation_des_donnees/cours.md)
