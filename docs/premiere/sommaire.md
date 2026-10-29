@@ -7,8 +7,8 @@ Progression annuel : &rarr; [Thèmes de l'année](progression_prem.md)
 &rarr; [Lien vers ordre de passage ](https://docs.google.com/spreadsheets/d/1Zw8ExMJ7VGeOpkh9FcD2wdSFKX-o3I1kvgfNcr00cUg/edit?usp=sharing){: target="_blank"}
 
 !!! tip "Thèmes en cours d'étude :"
-    - [T1 cours représentation données](Theme_1_Representation_des_donnees/cours.md)
-    - Exercices sur les opérations binaires : [1NSI_1.2_exercice_operations_sur_binaire](https://capytale2.ac-paris.fr/web/c/f535-11625167/mln){: target="_blank"}
+    - [T2 Cours sur les système d'exploitation](https://docs.google.com/presentation/d/1VuoajmAcA3ZuBzrIiC3cTLRvIZ9qmzSt3i4vZxfeiuE/edit?usp=sharing){: target="_blank"}
+    - [Mini jeu cmd - Terminus (lien cliquable)](https://luffah.xyz/bidules/Terminus/){: target ="_blank"}**  
 ___
 
 !!! note "Thèmes 1NSI"
@@ -16,8 +16,8 @@ ___
     |---|-------|
     | 1 | [Représentation des données](Theme_1_Representation_des_donnees/cours.md) |
     | 2 | [Systèmes exploitation](Theme_2_systeme_exploitation/sommaire.md) |
-    | 3 | [Types construits](Theme_3_Nom_du_theme/sommaire.md) |
-    | 4 | [Constructions élémentaires](Theme_4_Nom_du_theme/sommaire.md) |
+    | 3 | [Types construits](Theme_3_types_construits/sommaire.md) |
+    | 4 | [Constructions élémentaires](Theme_4_Constructions_elementaires/sommaire.md) |
     | 5 | [Architecture matérielle](Theme_5_Nom_du_theme/sommaire.md) |
     | 6 | [Algorithmique](Theme_6_Nom_du_theme/sommaire.md) |
     | 7 | [Types construits avancés](Theme_7_Nom_du_theme/sommaire.md) |

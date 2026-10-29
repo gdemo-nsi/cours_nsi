@@ -69,13 +69,13 @@ nav:
           - Sommaire: premiere/Theme_3_types_construits/sommaire.md
           - Cours: premiere/Theme_3_types_construits/cours_variable.md
           - Exercices: premiere/Theme_3_types_construits/exercices.md
-      - Thème 4:
-          - Sommaire: premiere/Theme_4_Nom_du_theme/sommaire.md
-      - Thème 5:
+      - Thème 4 - Constructions élémentaires:
+          - Sommaire: premiere/Theme_4_Constructions_elementaires/sommaire.md
+      - Thème 5 - Architecture Materielle:
           - Sommaire: premiere/Theme_5_Nom_du_theme/sommaire.md
-      - Thème 6:
+      - Thème 6 - Algorithmique:
           - Sommaire: premiere/Theme_6_Nom_du_theme/sommaire.md
-      - Thème 7:
+      - Thème 7 - :
           - Sommaire: premiere/Theme_7_Nom_du_theme/sommaire.md
       - Thème 8:
           - Sommaire: premiere/Theme_8_Nom_du_theme/sommaire.md

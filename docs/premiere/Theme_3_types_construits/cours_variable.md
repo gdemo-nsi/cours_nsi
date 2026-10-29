@@ -49,6 +49,10 @@ Vous pouvez directement afficher du texte, où faire des calculs.
 Imaginez votre armoire. Normalement, chaque vêtement à une place précise. Un ordinateur va attribuer une "place précise" (*qu'on appelle allocation mémoire*) à un nombre, texte, objet, etc. &rarr; **une variable**.  
 Vous pouvez nommer cette **variable** comme bon vous semble et lui mettre la valeur de votre choix.  
 
+![image](data/commode.jpg){: .center}
+
+zzzz
+
 > Par exemple : je souhaite stocker la valeur "chaussettes rouges" dans une variable que je vais nommer `tiroir`.  
 > Ainsi en python ça donne :  
 ```python
@@ -154,12 +158,12 @@ va provoquer chez l'ordinateur le comportement suivant :
 
 ![image](data/tiroirs.png){: .center}
 
-Cette explication est suffisante pour aborder la notion de variable : c'est un mot (ou une lettre) qui va désigner une valeur. 
+> Cette explication est suffisante pour aborder la notion de variable : c'est un mot (ou une lettre) qui va désigner une valeur. :heart:
 
 ### B.2 Une réalité bien plus complexe...
 
 ??? warning "B.2 Partie optionnelle - **Allocation mémoire**"
-    *La métaphore du tiroir est malheureusement un peu trop simplificatrice.*
+    *La métaphore du tiroir est malheureusement un peu trop simple.*
 
     ### B.2 Une réalité bien plus complexe...
     #### B.2.1 La commande ```id()``` : l'adresse du tiroir ?

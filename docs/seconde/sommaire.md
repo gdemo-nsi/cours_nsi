@@ -6,7 +6,8 @@ ___
 
 !!! tip "Thèmes en cours d'étude :"
     - [Cours Internet](Theme_1_Internet/cours.md)
-    - [Exposés Internet](Theme_1_Internet/exposes.md)
+    - [Activité 1 : lien vers activité Capytale : SNT_1.1_Internet](https://capytale2.ac-paris.fr/web/c/6f92-11652141/mln){:target="_blank"}
+    - [Activité 3 : lien vers activité Capytale : SNT_1.3_Filius](https://capytale2.ac-paris.fr/web/c/5e51-12411966/mln){:target="_blank"}
 
 !!! note "Thèmes SNT"
     | N° | Thème |
