@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outil Indentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Thème clair et épuré : fond blanc, filets fins, une couleur par bloc */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --ink: #1c2230;
+  --muted: #6a7282;
+  --line: #e4e7ec;
+  --code-bg: #ffffff;
+  --accent: #1f5fa8;
+  --tabc: #c98a00;
+  --kw: #7c3aed; --bi: #1f5fa8; --str: #15803d; --num: #b45309; --com: #9aa1ad;
+  /* une couleur par bloc */
+  --c0: #1f5fa8; --c1: #b45309; --c2: #15803d; --c3: #7c3aed; --c4: #be185d; --c5: #0e7490;
+  --err: #c0362c; --err-bg: #fdeeed; --ok: #15803d; --ok-bg: #eaf6ee; --warn: #9a6200; --warn-bg: #fdf4df;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+code, kbd { font-family: var(--mono); font-size: .86em; }
+code { background: #eef2f7; padding: .05em .35em; border-radius: 4px; }
+kbd { border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 .35em; background: var(--surface); }
+button, select, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.wrap {
+  max-width: 1200px; margin: 0 auto;
+  padding-block: 32px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px;
+}
+.top { display: grid; gap: 4px; }
+.kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-weight: 700; font-size: clamp(28px, 4.5vw, 40px); line-height: 1.1; margin: 0; letter-spacing: -.01em; }
+.lede { margin: 2px 0 0; color: var(--muted); font-size: 17px; max-width: 60ch; }
+h2 { font-weight: 700; font-size: 18px; margin: 0; }
+h3 { font-weight: 700; font-size: 16px; margin: 0; text-wrap: balance; }
+
+.bench { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 920px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.side { display: grid; gap: 20px; min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+.ph { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 14px 16px; }
+.pb { padding: 0 16px 16px; display: grid; gap: 10px; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 7px; padding: 7px 13px; cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.small { padding: 3px 10px; font-size: 13px; }
+
+/* Consigne d'exercice */
+.goal { margin: 0 16px 12px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; background: #fbfcfd; }
+.goal .row { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; }
+.goal .tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.goal .state { font-weight: 700; font-size: 14px; }
+.goal .state.ok { color: var(--ok); }
+.goal .state.ko { color: var(--warn); }
+.goal.solved { border-color: var(--ok); background: var(--ok-bg); }
+
+/* Éditeur */
+.editor { display: grid; grid-template-columns: auto minmax(0, 1fr); border-block: 1px solid var(--line); background: var(--code-bg); font-family: var(--mono); font-size: 15px; line-height: 24px; }
+.editor:focus-within { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); }
+.gutter { padding-block: 12px; border-right: 1px solid var(--line); background: #fafbfc; user-select: none; -webkit-user-select: none; }
+.gl { height: 24px; display: grid; grid-template-columns: 4px 2.4em 50px; align-items: center; gap: 5px; padding-right: 6px; }
+.gl .bar { height: 100%; background: var(--bc, transparent); }
+.gl .num { text-align: right; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; position: relative; }
+.gl.ran .num { color: var(--ok); font-weight: 600; }
+.gl.ran .num::before { content: "▸"; position: absolute; left: -2px; }
+.gl.skip .num { opacity: .45; }
+.gl.err .num { color: var(--err); font-weight: 600; }
+.gbs { display: flex; gap: 3px; }
+.gb { width: 23px; height: 20px; padding: 0; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--muted); font-family: var(--mono); font-size: 13px; line-height: 1; cursor: pointer; }
+.gb:hover { color: var(--accent); border-color: var(--accent); }
+.scroller { overflow-x: auto; min-width: 0; }
+.stack { position: relative; width: max-content; min-width: 100%; }
+.overlay, #code {
+  margin: 0; padding: 12px 32px 12px 14px;
+  font-family: var(--mono); font-size: 15px; line-height: 24px; font-weight: 400;
+  letter-spacing: 0; word-spacing: 0; font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0;
+  tab-size: 4; -moz-tab-size: 4; white-space: pre;
+}
+.overlay { min-height: calc(12 * 24px + 24px); color: var(--ink); }
+#code { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; color: transparent; caret-color: var(--ink); border: 0; outline: none; resize: none; overflow: hidden; -webkit-text-fill-color: transparent; }
+#code::selection { background: color-mix(in srgb, var(--accent) 25%, transparent); }
+#code::placeholder { color: var(--muted); -webkit-text-fill-color: var(--muted); opacity: .7; }
+
+/* Lignes et couleurs de blocs */
+.ln { height: 24px; position: relative; }
+.bk0 { --bc: var(--c0); } .bk1 { --bc: var(--c1); } .bk2 { --bc: var(--c2); }
+.bk3 { --bc: var(--c3); } .bk4 { --bc: var(--c4); } .bk5 { --bc: var(--c5); } .bkx { --bc: var(--err); }
+.gk0 { --gc: var(--c0); } .gk1 { --gc: var(--c1); } .gk2 { --gc: var(--c2); }
+.gk3 { --gc: var(--c3); } .gk4 { --gc: var(--c4); } .gk5 { --gc: var(--c5); } .gkx { --gc: var(--err); }
+.ln.tinted { background: linear-gradient(90deg, transparent var(--ind), color-mix(in srgb, var(--bc) 9%, transparent) var(--ind)); }
+.guide { position: absolute; top: 0; bottom: 0; width: 0; margin-left: .42ch; border-left: 2px solid var(--gc); opacity: .7; pointer-events: none; }
+.ln.err { background: var(--err-bg); }
+.ln.err::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; border-bottom: 2px dotted var(--err); }
+.ln.skip { opacity: .35; }
+.w { position: relative; }
+.w::before { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; }
+.w.s { background: color-mix(in srgb, var(--err) 14%, transparent); }
+.w.s::before { content: "·"; text-align: center; color: var(--err); }
+.show-tabs .w.t { background: color-mix(in srgb, var(--tabc) 16%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tabc) 45%, transparent); border-radius: 3px; }
+.show-tabs .w.t::before { content: "→"; padding-left: .25ch; color: var(--tabc); }
+.k { color: var(--kw); } .b { color: var(--bi); } .s { color: var(--str); } .n { color: var(--num); } .c { color: var(--com); }
+
+.status { display: flex; flex-wrap: wrap; gap: 6px 12px; padding: 9px 16px; font-size: 14px; border-bottom: 1px solid var(--line); min-height: 42px; align-items: center; color: var(--muted); }
+.status b { font-family: var(--mono); font-weight: 600; font-size: 13px; color: var(--ink); }
+.status .ind { font-family: var(--mono); font-size: 13px; color: var(--ink); background: color-mix(in srgb, var(--tabc) 14%, transparent); padding: 1px 7px; border-radius: 4px; }
+.status .warn { color: var(--warn); font-weight: 700; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 9px 16px; font-size: 13px; color: var(--muted); align-items: center; }
+.legend .ran { color: var(--ok); font-weight: 700; }
+.check { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; color: var(--ink); }
+.check input { accent-color: var(--accent); width: 15px; height: 15px; }
+
+.diag { margin: 0 16px 16px; border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; font-size: 15px; }
+.diag.ok { background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+.diag.bad { background: var(--err-bg); }
+.diag.bad .dt { color: var(--err); font-weight: 700; }
+.tbk { margin: 0; font-family: var(--mono); font-size: 13px; line-height: 1.5; white-space: pre; overflow-x: auto; background: var(--surface); border: 1px solid #f3cfcb; border-radius: 6px; padding: 8px 10px; color: var(--err); }
+
+/* Console */
+.pill { font-size: 12px; font-family: var(--mono); padding: 2px 9px; border-radius: 999px; background: #eef0f3; color: var(--muted); }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.err { background: var(--err-bg); color: var(--err); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.out { font-family: var(--mono); font-size: 14px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; background: #fafbfc; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-height: 110px; max-height: 300px; overflow: auto; }
+.muted { color: var(--muted); }
+.out .tb { color: var(--err); display: block; margin-top: 4px; white-space: pre; overflow-x: auto; }
+.out .note { display: block; margin-top: 8px; font-family: var(--body); font-size: 14px; color: var(--ink); white-space: normal; }
+
+/* Structure des blocs : contrasté */
+.tree { font-size: 14px; display: grid; }
+.blk { border: 2px solid var(--bc); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.blk.root { --bc: #2b3242; }
+.bh { background: var(--bc); color: #fff; padding: 5px 10px; font-family: var(--mono); font-size: 13px; font-weight: 600; display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+.bh .hint { font-family: var(--body); font-weight: 400; opacity: .9; }
+.blk ul { list-style: none; margin: 0; padding: 6px 8px; display: grid; gap: 3px; }
+.blk li > .blk { margin: 4px 0 4px 16px; }
+.sline { all: unset; cursor: pointer; display: flex; gap: 8px; align-items: baseline; padding: 2px 6px; border-radius: 4px; max-width: 100%; box-sizing: border-box; }
+.sline:hover { background: #eef2f7; }
+.sline:focus-visible { outline: 2px solid var(--accent); }
+.sline .lno { font-family: var(--mono); font-size: 11px; color: #4b5563; min-width: 2em; text-align: right; font-variant-numeric: tabular-nums; }
+.sline code { white-space: pre; overflow: hidden; text-overflow: ellipsis; background: transparent; padding: 0; color: #111827; font-size: 13.5px; }
+li.badline .sline code { color: var(--err); }
+
+/* Missions */
+.missions { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.mission { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; }
+.mission .tick { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-weight: 700; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+.mission.done .tick { background: var(--ok); border-color: var(--ok); color: #fff; }
+.mission.done span.t { color: var(--muted); text-decoration: line-through; }
+.progress { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+/* Fiches */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 760px) { .cards { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card p { margin: 0; max-width: 65ch; }
+.card.wide { grid-column: 1 / -1; }
+.compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .compare { grid-template-columns: minmax(0, 1fr); } }
+.cmp { display: grid; gap: 6px; min-width: 0; }
+.cmp .lbl { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.code-static { font-family: var(--mono); font-size: 14px; line-height: 24px; tab-size: 4; -moz-tab-size: 4; white-space: pre; font-variant-ligatures: none; background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; overflow-x: auto; }
+.mini-out { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.mini-out pre { margin: 0; font-family: var(--mono); color: var(--ink); background: #fafbfc; border: 1px dashed var(--line); border-radius: 6px; padding: 2px 8px; }
+.errs { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.errs li { display: grid; gap: 1px; }
+.errs .e { font-family: var(--mono); font-size: 13px; color: var(--err); }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">NSI · Python</div>
+    <h1>Outil Indentation</h1>
+    <p class="lede">En Python, la tabulation en début de ligne définit les blocs. Décale les lignes, exécute, observe.</p>
+  </header>
+
+  <main class="bench">
+    <section class="panel" aria-labelledby="h-sandbox">
+      <div class="ph">
+        <h2 id="h-sandbox">Bac à sable</h2>
+        <div class="toolbar">
+          <label class="sr" for="example">Choisir un exemple ou un exercice</label>
+          <select id="example" class="btn"></select>
+          <button id="reset" class="btn" type="button">Réinitialiser</button>
+          <button id="run" class="btn primary" type="button">▶ Exécuter</button>
+        </div>
+      </div>
+      <div class="goal" id="goal" hidden></div>
+
+      <div class="editor show-tabs" id="editor">
+        <div class="gutter" id="gutter"></div>
+        <div class="scroller">
+          <div class="stack">
+            <div class="overlay" id="overlay" aria-hidden="true"></div>
+            <textarea id="code" wrap="off" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off"
+              aria-label="Éditeur de code Python" aria-describedby="hint"
+              placeholder="age = 15&#10;&#10;if age >= 18:&#10;&#9;print(&quot;Tu es majeur.&quot;)&#10;&#9;print(&quot;Tu peux voter.&quot;)&#10;print(&quot;Fin du programme.&quot;)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="status" id="status" aria-live="polite"></div>
+      <div class="legend" id="hint">
+        <label class="check"><input type="checkbox" id="showTabs" checked> Afficher les tabulations <code>→</code></label>
+        <span><span class="ran">▸</span> exécutée · pâle : ignorée</span>
+        <span><kbd>Tab</kbd> / <kbd>Maj</kbd>+<kbd>Tab</kbd> décaler · <kbd>Ctrl</kbd>+<kbd>Entrée</kbd> exécuter</span>
+      </div>
+      <div class="diag" id="diag" aria-live="polite"></div>
+    </section>
+
+    <aside class="side">
+      <section class="panel" aria-labelledby="h-out">
+        <div class="ph"><h2 id="h-out">Console</h2><span class="pill" id="runState">Pas encore exécuté</span></div>
+        <div class="pb"><div class="out" id="out" aria-live="polite"></div></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-tree">
+        <div class="ph"><h2 id="h-tree">Structure des blocs</h2><span class="progress" id="treeInfo"></span></div>
+        <div class="pb"><div class="tree" id="tree"></div></div>
+      </section>
+
+      <section class="panel" aria-labelledby="h-mis">
+        <div class="ph"><h2 id="h-mis">Missions</h2><span class="progress" id="misProgress"></span></div>
+        <div class="pb"><ol class="missions" id="missions"></ol></div>
+      </section>
+    </aside>
+  </main>
+
+  <section class="cards" aria-label="À retenir">
+    <article class="card">
+      <h3>La tabulation crée le bloc</h3>
+      <p>Une ligne terminée par <code>:</code> ouvre un bloc. Les lignes décalées d'une tabulation en dessous en font partie. Le bloc s'arrête à la première ligne moins décalée.</p>
+    </article>
+    <article class="card">
+      <h3>Erreurs à reconnaître</h3>
+      <ul class="errs">
+        <li><span class="e">unexpected indent</span><span>Tabulation en trop.</span></li>
+        <li><span class="e">expected an indented block</span><span>Rien de décalé après <code>:</code>.</span></li>
+        <li><span class="e">unindent does not match…</span><span>Ligne mal alignée.</span></li>
+      </ul>
+    </article>
+    <article class="card wide">
+      <h3>Une tabulation change le programme</h3>
+      <div class="compare">
+        <div class="cmp"><span class="lbl">A · ligne 4 dans le bloc</span><div id="cmpA"></div></div>
+        <div class="cmp"><span class="lbl">B · ligne 4 hors du bloc</span><div id="cmpB"></div></div>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <span>Outil généré avec une intelligence artificielle (Claude, Anthropic).</span>
+    <span>Simulateur limité à : variables, <code>print</code>, <code>input</code>, <code>if</code>/<code>elif</code>/<code>else</code>, <code>for</code>, <code>while</code>.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+"use strict";
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (_) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} }
+};
+function visualCols(ws, size) { let c = 0; for (const ch of ws) c = ch === "\t" ? (Math.floor(c / size) + 1) * size : c + 1; return c; }
+/* Les exemples sont écrits avec 4 espaces puis convertis en tabulations */
+function toTabs(s) { return s.replace(/^[ \t]+/gm, (ws) => "\t".repeat(Math.round(visualCols(ws, 4) / 4))); }
+
+/* ---------- Exemples et exercices ---------- */
+const EXAMPLES = [
+  { id: "simple", name: "Condition simple", code:
+`age = 15
+
+if age >= 18:
+    print("Tu es majeur.")
+    print("Tu peux voter.")
+print("Fin du programme.")` },
+  { id: "ifelse", name: "Si… sinon", code:
+`temperature = 12
+
+if temperature > 20:
+    print("Il fait doux.")
+else:
+    print("Il fait frais.")
+    print("Prends une veste.")
+print("Bonne journée !")` },
+  { id: "nested", name: "Conditions imbriquées", code:
+`note = 14
+
+if note >= 10:
+    print("Admis")
+    if note >= 16:
+        print("Mention très bien")
+    elif note >= 14:
+        print("Mention bien")
+else:
+    print("Refusé")
+print("Bulletin terminé")` },
+  { id: "loop", name: "Boucle et condition", code:
+`for i in range(1, 6):
+    if i % 2 == 0:
+        print(i, "est pair")
+    else:
+        print(i, "est impair")
+print("Boucle terminée")` },
+
+  { id: "r1", repair: true, name: "Bloc oublié", goal: "Afficher les deux messages si le mot de passe est bon.", code:
+`mot_de_passe = "nsi"
+if mot_de_passe == "nsi":
+print("Accès autorisé")
+print("Bienvenue")`, solution:
+`mot_de_passe = "nsi"
+if mot_de_passe == "nsi":
+    print("Accès autorisé")
+    print("Bienvenue")` },
+  { id: "r2", repair: true, name: "Tabulation en trop", goal: "Afficher 10.", code:
+`x = 7
+    y = 3
+print(x + y)`, solution:
+`x = 7
+y = 3
+print(x + y)` },
+  { id: "r3", repair: true, name: "else mal placé", goal: "Afficher « petit ».", code:
+`n = 5
+if n > 10:
+    print("grand")
+    else:
+    print("petit")`, solution:
+`n = 5
+if n > 10:
+    print("grand")
+else:
+    print("petit")` },
+  { id: "r4", repair: true, name: "Message au mauvais endroit", goal: "« Fin » doit s'afficher quelle que soit la note.", code:
+`note = 8
+if note >= 10:
+    print("Admis")
+    print("Fin")`, solution:
+`note = 8
+if note >= 10:
+    print("Admis")
+print("Fin")` },
+  { id: "r5", repair: true, name: "Boucle infinie", goal: "Afficher 0, 1 et 2.", code:
+`compteur = 0
+while compteur < 3:
+    print(compteur)
+compteur = compteur + 1`, solution:
+`compteur = 0
+while compteur < 3:
+    print(compteur)
+    compteur = compteur + 1` },
+  { id: "r6", repair: true, name: "Tables de multiplication", goal: "Pour chaque table : son titre, puis ses 3 lignes.", code:
+`for i in range(1, 4):
+print("Table de", i)
+    for j in range(1, 4):
+    print(i, "x", j, "=", i * j)`, solution:
+`for i in range(1, 4):
+    print("Table de", i)
+    for j in range(1, 4):
+        print(i, "x", j, "=", i * j)` }
+];
+EXAMPLES.forEach((x) => { x.code = toTabs(x.code); if (x.solution) x.solution = toTabs(x.solution); });
+
+function stripComment(s) {
+  let q = null;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (q) { if (c === "\\") { i++; continue; } if (c === q) q = null; }
+    else if (c === '"' || c === "'") q = c;
+    else if (c === "#") return s.slice(0, i);
+  }
+  return s;
+}
+function lineOf(src, pos) { let n = 0; for (let i = 0; i < pos && i < src.length; i++) if (src[i] === "\n") n++; return n; }
+function lineStarts(src) { const s = [0]; for (let i = 0; i < src.length; i++) if (src[i] === "\n") s.push(i + 1); return s; }
+function headerName(code) {
+  const kw = (code.match(/^[A-Za-z_]+/) || [""])[0];
+  if (kw === "def") return "function definition";
+  if (kw === "class") return "class definition";
+  return `'${kw}' statement`;
+}
+
+/* ---------- Analyse de l'indentation (règles du tokenizer de Python) ---------- */
+function analyze(src) {
+  const L = src.split("\n").map((raw, i) => {
+    const ws = raw.match(/^[ \t]*/)[0];
+    const body = raw.slice(ws.length);
+    const code = stripComment(body).trim();
+    return { i, raw, ws, body, code, blank: code === "", c8: visualCols(ws, 8), c1: ws.length, c4: visualCols(ws, 4), level: 0, header: -1, orphan: false, cols: [0], ref: null };
+  });
+  const stack = [{ c8: 0, c1: 0, c4: 0, h: -1, orphan: false }];
+  let err = null, prevOpen = -1, prevLine = -1;
+  const set = (e) => { if (!err) err = e; };
+  const cmp = (a, b, li) => {
+    const s8 = Math.sign(a.c8 - b.c8), s1 = Math.sign(a.c1 - b.c1);
+    if (s8 !== s1) {
+      set({ type: "TabError", key: "tab", line: li, lineno: li + 1, msg: "inconsistent use of tabs and spaces in indentation" });
+      return Math.sign(a.c4 - b.c4) || s8;
+    }
+    return s8;
+  };
+  const push = (ln, h, orphan) => stack.push({ c8: ln.c8, c1: ln.c1, c4: ln.c4, h, orphan });
+  for (const ln of L) {
+    if (ln.blank) continue;
+    const c = cmp(ln, stack[stack.length - 1], ln.i);
+    if (prevOpen >= 0 && c > 0) push(ln, prevOpen, false);
+    else {
+      if (prevOpen >= 0) set({ type: "IndentationError", key: "expected", line: ln.i, lineno: ln.i + 1, header: prevOpen, msg: `expected an indented block after ${headerName(L[prevOpen].code)} on line ${prevOpen + 1}` });
+      if (c > 0) {
+        set({ type: "IndentationError", key: "unexpected", line: ln.i, lineno: ln.i + 1, msg: "unexpected indent" });
+        push(ln, prevLine, true);
+      } else if (c < 0) {
+        while (stack.length > 1 && cmp(ln, stack[stack.length - 1], ln.i) < 0) stack.pop();
+        if (cmp(ln, stack[stack.length - 1], ln.i) !== 0) {
+          set({ type: "IndentationError", key: "dedent", line: ln.i, lineno: ln.i + 1, msg: "unindent does not match any outer indentation level" });
+          push(ln, prevLine, true);
+        }
+      }
+    }
+    const top = stack[stack.length - 1];
+    ln.level = stack.length - 1; ln.header = top.h; ln.orphan = !!top.orphan; ln.cols = stack.map((s) => s.c4);
+    prevOpen = ln.code.endsWith(":") ? ln.i : -1;
+    prevLine = ln.i;
+  }
+  if (prevOpen >= 0) set({ type: "IndentationError", key: "expected", line: prevOpen, lineno: prevOpen + 2, header: prevOpen, eof: true, msg: `expected an indented block after ${headerName(L[prevOpen].code)} on line ${prevOpen + 1}` });
+
+  const next = new Array(L.length); let nx = null;
+  for (let i = L.length - 1; i >= 0; i--) { next[i] = nx; if (!L[i].blank) nx = L[i]; }
+  let prev = null;
+  for (const ln of L) {
+    if (!ln.blank) { prev = ln; continue; }
+    const nb = next[ln.i];
+    const pick = !prev ? nb : !nb ? prev : (prev.cols.length <= nb.cols.length ? prev : nb);
+    ln.cols = pick ? pick.cols : [0];
+    ln.ref = pick ? pick.i : null;
+    ln.level = ln.cols.length - 1;
+  }
+  return { lines: L, err };
+}
+function kidsMap(an) {
+  const k = {};
+  for (const ln of an.lines) if (!ln.blank) (k[ln.header] = k[ln.header] || []).push(ln.i);
+  return k;
+}
+function fullAnalyze(src) {
+  const an = analyze(src);
+  const errs = an.err ? [an.err] : [];
+  const COMP = /^(if|elif|else|for|while|def|class|try|except|finally|with)\b/;
+  for (const ln of an.lines) {
+    if (ln.blank) continue;
+    const m = ln.code.match(COMP);
+    if (m && !ln.code.endsWith(":")) { errs.push({ type: "SyntaxError", key: "colon", kw: m[1], line: ln.i, lineno: ln.i + 1, msg: "expected ':'" }); break; }
+    if (!m && ln.code.endsWith(":")) { errs.push({ type: "SyntaxError", key: "syntax", line: ln.i, lineno: ln.i + 1, msg: "invalid syntax" }); break; }
+  }
+  const kids = kidsMap(an);
+  outer: for (const h in kids) {
+    const list = kids[h];
+    for (let k = 0; k < list.length; k++) {
+      const c = an.lines[list[k]].code;
+      const kw = (c.match(/^(elif|else)\b/) || [])[1];
+      if (!kw) continue;
+      const pk = k > 0 ? (an.lines[list[k - 1]].code.match(/^[A-Za-z_]+/) || [""])[0] : "";
+      const ok = kw === "elif" ? (pk === "if" || pk === "elif") : ["if", "elif", "for", "while", "try", "except"].includes(pk);
+      if (!ok) { errs.push({ type: "SyntaxError", key: "else", kw, line: list[k], lineno: list[k] + 1, msg: "invalid syntax" }); break outer; }
+    }
+  }
+  errs.sort((a, b) => a.line - b.line);
+  an.err = errs[0] || null;
+  an.kids = kids;
+  /* une couleur par bloc, dans l'ordre d'apparition */
+  an.color = {}; let n = 0;
+  an.lines.forEach((ln) => { if (kids[ln.i]) an.color[ln.i] = n++ % 6; });
+  return an;
+}
+function chainOf(an, i) {
+  const ln = an.lines[i];
+  if (ln.blank) return ln.ref == null ? [] : chainOf(an, ln.ref).slice(0, ln.cols.length - 1);
+  const out = []; let h = ln.header;
+  while (h >= 0) { out.unshift(h); h = an.lines[h].header; }
+  return out;
+}
+
+/* ---------- Mini-interpréteur Python ---------- */
+class PyErr extends Error { constructor(type, msg, line) { super(msg); this.type = type; this.line = line; } }
+class Brk {} class Cont {}
+const isNum = (v) => typeof v === "number" || typeof v === "boolean";
+const isInt = (v) => typeof v === "boolean" || (typeof v === "number" && Number.isInteger(v));
+function tn(v) {
+  if (v === null || v === undefined) return "NoneType";
+  if (typeof v === "boolean") return "bool";
+  if (typeof v === "number") return Number.isInteger(v) ? "int" : "float";
+  if (typeof v === "string") return "str";
+  if (v && v.range) return "range";
+  return "object";
+}
+function pyStr(v) {
+  if (v === true) return "True";
+  if (v === false) return "False";
+  if (v === null || v === undefined) return "None";
+  if (typeof v === "number") { if (v === Infinity) return "inf"; if (v === -Infinity) return "-inf"; return String(v); }
+  if (v && v.range) { const [s, e, st] = v.range; return st === 1 ? `range(${s}, ${e})` : `range(${s}, ${e}, ${st})`; }
+  return String(v);
+}
+const rangeLen = (r) => { const [s, e, st] = r.range; return Math.max(0, Math.ceil((e - s) / st)); };
+const truthy = (v) => !(v === false || v === 0 || v === "" || v === null || v === undefined || (v && v.range && rangeLen(v) === 0));
+
+const TOK = /\s*(?:(\d+\.\d*|\.\d+|\d+)|([fF]?)("(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*')|([A-Za-z_À-ɏ][\wÀ-ɏ]*)|(\*\*|\/\/|==|!=|<=|>=|[-+*\/%<>(),=]))/y;
+function unescape(s) { return s.slice(1, -1).replace(/\\(.)/g, (m, c) => ({ n: "\n", t: "\t", "\\": "\\", "'": "'", '"': '"' }[c] ?? m)); }
+function tokenize(src) {
+  const t = []; let pos = 0;
+  while (pos < src.length) {
+    TOK.lastIndex = pos;
+    const m = TOK.exec(src);
+    if (!m) {
+      const rest = src.slice(pos);
+      if (/^\s*$/.test(rest)) break;
+      if (/^\s*["']/.test(rest)) throw new PyErr("SyntaxError", "unterminated string literal");
+      throw new PyErr("SyntaxError", "invalid syntax");
+    }
+    pos = TOK.lastIndex;
+    if (m[1] !== undefined) t.push({ k: "num", v: m[1] });
+    else if (m[3] !== undefined) t.push({ k: "str", v: unescape(m[3]), f: !!m[2] });
+    else if (m[4] !== undefined) t.push({ k: "name", v: m[4] });
+    else if (m[5] !== undefined) t.push({ k: "op", v: m[5] });
+  }
+  return t;
+}
+const BAD_NAMES = new Set(["if", "elif", "else", "while", "for", "in", "def", "return", "pass", "break", "continue", "and", "or", "not", "class", "import", "is", "lambda", "from", "try", "except", "with"]);
+function parseExpr(src) {
+  const t = tokenize(src); let p = 0;
+  const fail = () => { throw new PyErr("SyntaxError", "invalid syntax"); };
+  const isOp = (v) => t[p] && t[p].k === "op" && t[p].v === v;
+  const isName = (v) => t[p] && t[p].k === "name" && t[p].v === v;
+  const CMP = ["==", "!=", "<", ">", "<=", ">="];
+  function orE() { let a = andE(); while (isName("or")) { p++; a = { t: "or", a, b: andE() }; } return a; }
+  function andE() { let a = notE(); while (isName("and")) { p++; a = { t: "and", a, b: notE() }; } return a; }
+  function notE() { if (isName("not")) { p++; return { t: "not", a: notE() }; } return cmpE(); }
+  function cmpE() {
+    const items = [arith()], ops = [];
+    while (t[p] && t[p].k === "op" && CMP.includes(t[p].v)) { ops.push(t[p++].v); items.push(arith()); }
+    return ops.length ? { t: "cmp", ops, items } : items[0];
+  }
+  function arith() { let a = term(); while (isOp("+") || isOp("-")) { const op = t[p++].v; a = { t: "bin", op, a, b: term() }; } return a; }
+  function term() { let a = unary(); while (isOp("*") || isOp("/") || isOp("//") || isOp("%")) { const op = t[p++].v; a = { t: "bin", op, a, b: unary() }; } return a; }
+  function unary() { if (isOp("-") || isOp("+")) { const op = t[p++].v; return { t: "un", op, a: unary() }; } return power(); }
+  function power() { const a = atom(); if (isOp("**")) { p++; return { t: "bin", op: "**", a, b: unary() }; } return a; }
+  function atom() {
+    const k = t[p]; if (!k) fail();
+    if (k.k === "num") { p++; return { t: "val", v: parseFloat(k.v) }; }
+    if (k.k === "str") { p++; return { t: k.f ? "fstr" : "val", v: k.v }; }
+    if (k.k === "name") {
+      if (BAD_NAMES.has(k.v)) fail();
+      p++;
+      if (k.v === "True") return { t: "val", v: true };
+      if (k.v === "False") return { t: "val", v: false };
+      if (k.v === "None") return { t: "val", v: null };
+      if (isOp("(")) {
+        p++; const args = [], kw = Object.create(null);
+        if (!isOp(")")) {
+          for (;;) {
+            if (t[p] && t[p].k === "name" && t[p + 1] && t[p + 1].k === "op" && t[p + 1].v === "=") { const nm = t[p].v; p += 2; kw[nm] = orE(); }
+            else args.push(orE());
+            if (isOp(",")) { p++; if (isOp(")")) break; continue; }
+            break;
+          }
+        }
+        if (!isOp(")")) fail(); p++;
+        return { t: "call", name: k.v, args, kw };
+      }
+      return { t: "name", v: k.v };
+    }
+    if (isOp("(")) { p++; const e = orE(); if (!isOp(")")) fail(); p++; return e; }
+    fail();
+  }
+  const e = orE();
+  if (p < t.length) fail();
+  return e;
+}
+function binop(op, a, b) {
+  const N = isNum(a) && isNum(b);
+  if (op === "+") {
+    if (N) return +a + +b;
+    if (typeof a === "string" && typeof b === "string") return a + b;
+    if (typeof a === "string") throw new PyErr("TypeError", `can only concatenate str (not "${tn(b)}") to str`);
+  }
+  if (op === "*") {
+    if (N) return +a * +b;
+    if (typeof a === "string" && isInt(b)) return a.repeat(Math.max(0, +b));
+    if (isInt(a) && typeof b === "string") return b.repeat(Math.max(0, +a));
+  }
+  if (N) {
+    a = +a; b = +b;
+    switch (op) {
+      case "-": return a - b;
+      case "/": if (b === 0) throw new PyErr("ZeroDivisionError", "division by zero"); return a / b;
+      case "//": if (b === 0) throw new PyErr("ZeroDivisionError", "integer division or modulo by zero"); return Math.floor(a / b);
+      case "%": if (b === 0) throw new PyErr("ZeroDivisionError", "integer modulo by zero"); return ((a % b) + b) % b;
+      case "**": return a ** b;
+    }
+  }
+  throw new PyErr("TypeError", `unsupported operand type(s) for ${op}: '${tn(a)}' and '${tn(b)}'`);
+}
+function compare(op, a, b) {
+  if (op === "==" || op === "!=") {
+    const eq = isNum(a) && isNum(b) ? +a === +b : a === b;
+    return op === "==" ? eq : !eq;
+  }
+  const ok = (isNum(a) && isNum(b)) || (typeof a === "string" && typeof b === "string");
+  if (!ok) throw new PyErr("TypeError", `'${op}' not supported between instances of '${tn(a)}' and '${tn(b)}'`);
+  if (isNum(a)) { a = +a; b = +b; }
+  switch (op) { case "<": return a < b; case ">": return a > b; case "<=": return a <= b; case ">=": return a >= b; }
+}
+const BUILTINS = {
+  print(args, kw, ctx) {
+    const sep = kw.sep !== undefined ? pyStr(kw.sep) : " ";
+    const end = kw.end !== undefined ? pyStr(kw.end) : "\n";
+    ctx.out += args.map(pyStr).join(sep) + end; return null;
+  },
+  input(args, kw, ctx) {
+    const q = args.length ? pyStr(args[0]) : "";
+    let r = null;
+    try { r = window.prompt(q || "Saisie :", ""); } catch (_) { r = null; }
+    if (r === null) throw new PyErr("Arrêt", "saisie annulée");
+    ctx.out += q + r + "\n"; return r;
+  },
+  len(a) {
+    const v = a[0];
+    if (typeof v === "string") return v.length;
+    if (v && v.range) return rangeLen(v);
+    throw new PyErr("TypeError", `object of type '${tn(v)}' has no len()`);
+  },
+  str(a) { return a.length ? pyStr(a[0]) : ""; },
+  int(a) {
+    const v = a[0];
+    if (typeof v === "string") { if (!/^\s*[-+]?\d+\s*$/.test(v)) throw new PyErr("ValueError", `invalid literal for int() with base 10: '${v}'`); return parseInt(v, 10); }
+    if (isNum(v)) return Math.trunc(+v);
+    throw new PyErr("TypeError", `int() argument must be a string or a number, not '${tn(v)}'`);
+  },
+  float(a) {
+    const v = a[0];
+    if (typeof v === "string") { const f = Number(v.trim()); if (v.trim() === "" || Number.isNaN(f)) throw new PyErr("ValueError", `could not convert string to float: '${v}'`); return f; }
+    if (isNum(v)) return +v;
+    throw new PyErr("TypeError", `float() argument must be a string or a number, not '${tn(v)}'`);
+  },
+  abs(a) { if (!isNum(a[0])) throw new PyErr("TypeError", `bad operand type for abs(): '${tn(a[0])}'`); return Math.abs(+a[0]); },
+  round(a) { if (!isNum(a[0])) throw new PyErr("TypeError", `type ${tn(a[0])} doesn't define __round__ method`); return a.length > 1 ? Number((+a[0]).toFixed(+a[1])) : Math.round(+a[0]); },
+  max(a) { if (!a.length) throw new PyErr("TypeError", "max expected at least 1 argument, got 0"); return a.reduce((m, v) => (compare(">", v, m) ? v : m)); },
+  min(a) { if (!a.length) throw new PyErr("TypeError", "min expected at least 1 argument, got 0"); return a.reduce((m, v) => (compare("<", v, m) ? v : m)); },
+  range(a) {
+    if (!a.length || a.length > 3) throw new PyErr("TypeError", `range expected at least 1 argument, got ${a.length}`);
+    for (const v of a) if (!isInt(v)) throw new PyErr("TypeError", `'${tn(v)}' object cannot be interpreted as an integer`);
+    const r = a.length === 1 ? [0, +a[0], 1] : [+a[0], +a[1], a.length > 2 ? +a[2] : 1];
+    if (r[2] === 0) throw new PyErr("ValueError", "range() arg 3 must not be zero");
+    return { range: r };
+  }
+};
+function ev(n, ctx) {
+  switch (n.t) {
+    case "val": return n.v;
+    case "fstr": return n.v.replace(/\{([^{}]*)\}/g, (m, inner) => pyStr(ev(parseExpr(inner), ctx)));
+    case "name":
+      if (n.v in ctx.vars) return ctx.vars[n.v];
+      if (BUILTINS[n.v]) throw new PyErr("Limite du simulateur", `« ${n.v} » doit être appelée avec des parenthèses`);
+      throw new PyErr("NameError", `name '${n.v}' is not defined`);
+    case "not": return !truthy(ev(n.a, ctx));
+    case "and": { const a = ev(n.a, ctx); return truthy(a) ? ev(n.b, ctx) : a; }
+    case "or": { const a = ev(n.a, ctx); return truthy(a) ? a : ev(n.b, ctx); }
+    case "un": {
+      const a = ev(n.a, ctx);
+      if (!isNum(a)) throw new PyErr("TypeError", `bad operand type for unary ${n.op}: '${tn(a)}'`);
+      return n.op === "-" ? -a : +a;
+    }
+    case "bin": return binop(n.op, ev(n.a, ctx), ev(n.b, ctx));
+    case "cmp": {
+      let l = ev(n.items[0], ctx);
+      for (let k = 0; k < n.ops.length; k++) { const r = ev(n.items[k + 1], ctx); if (!compare(n.ops[k], l, r)) return false; l = r; }
+      return true;
+    }
+    case "call": {
+      if (n.name in ctx.vars) throw new PyErr("TypeError", `'${tn(ctx.vars[n.name])}' object is not callable`);
+      const f = BUILTINS[n.name];
+      if (!f) throw new PyErr("NameError", `name '${n.name}' is not defined`);
+      const args = n.args.map((a) => ev(a, ctx));
+      const kw = Object.create(null); for (const k in n.kw) kw[k] = ev(n.kw[k], ctx);
+      return f(args, kw, ctx);
+    }
+  }
+}
+function* iterate(v) {
+  if (v && v.range) { const [s, e, st] = v.range; for (let i = s; st > 0 ? i < e : i > e; i += st) yield i; return; }
+  if (typeof v === "string") { yield* v; return; }
+  throw new PyErr("TypeError", `'${tn(v)}' object is not iterable`);
+}
+function simulate(src) {
+  const an = fullAnalyze(src);
+  const executed = new Set();
+  if (an.err) return { src, output: "", executed, error: an.err, compile: true };
+  const ctx = { vars: Object.create(null), out: "", line: 0 };
+  let steps = 0;
+  const tick = (i) => { executed.add(i); ctx.line = i; if (++steps > 5000) throw new PyErr("Arrêt", "plus de 5000 instructions : boucle infinie ?", i); };
+  const E = (code, i) => { ctx.line = i; return ev(parseExpr(code), ctx); };
+  const build = (h) => (an.kids[h] || []).map((i) => ({ i, code: an.lines[i].code, kids: build(i) }));
+  function runLoopBody(kids, depth) {
+    try { block(kids, depth); return 0; }
+    catch (e) { if (e instanceof Brk) return 1; if (e instanceof Cont) return 0; throw e; }
+  }
+  function block(nodes, depth) {
+    for (let k = 0; k < nodes.length; k++) {
+      const n = nodes[k], c = n.code, i = n.i;
+      let m;
+      if ((m = c.match(/^if\b\s*(.*):$/))) {
+        const chain = [{ n, cond: m[1] }]; let j = k + 1;
+        while (j < nodes.length) {
+          const c2 = nodes[j].code; let m2;
+          if ((m2 = c2.match(/^elif\b\s*(.*):$/))) { chain.push({ n: nodes[j], cond: m2[1] }); j++; }
+          else if (/^else\s*:$/.test(c2)) { chain.push({ n: nodes[j], cond: null }); j++; break; }
+          else break;
+        }
+        k = j - 1;
+        for (const br of chain) {
+          tick(br.n.i);
+          if (br.cond === null || truthy(E(br.cond, br.n.i))) { block(br.n.kids, depth); break; }
+        }
+      } else if (/^(elif|else)\b/.test(c)) {
+        tick(i);
+        if (/^else\s*:$/.test(c)) throw new PyErr("Limite du simulateur", "« else » après une boucle non géré", i);
+        throw new PyErr("SyntaxError", "invalid syntax", i);
+      } else if ((m = c.match(/^while\b\s*(.*):$/))) {
+        for (;;) { tick(i); if (!truthy(E(m[1], i))) break; if (runLoopBody(n.kids, depth + 1)) break; }
+      } else if (/^for\b/.test(c)) {
+        m = c.match(/^for\s+([A-Za-z_]\w*)\s+in\s+(.+):$/);
+        if (!m) { tick(i); throw new PyErr("SyntaxError", "invalid syntax", i); }
+        tick(i);
+        const it = iterate(E(m[2], i));
+        let first = true;
+        for (const v of it) { if (!first) tick(i); first = false; ctx.vars[m[1]] = v; if (runLoopBody(n.kids, depth + 1)) break; }
+      } else if (c === "pass") { tick(i); }
+      else if (c === "break" || c === "continue") {
+        tick(i);
+        if (!depth) throw new PyErr("SyntaxError", `'${c}' outside loop`, i);
+        throw c === "break" ? new Brk() : new Cont();
+      } else if (/^(def|class|return|try|except|finally|with|import|from|lambda|global)\b/.test(c)) {
+        tick(i);
+        throw new PyErr("Limite du simulateur", `« ${c.split(/\s|\(/)[0]} » non géré`, i);
+      } else if ((m = c.match(/^([A-Za-z_À-ɏ][\wÀ-ɏ]*)\s*(\*\*|\/\/|\+|-|\*|\/|%)?=(?!=)\s*(.*)$/))) {
+        tick(i);
+        const name = m[1];
+        if (BAD_NAMES.has(name) || name === "True" || name === "False" || name === "None") throw new PyErr("SyntaxError", "invalid syntax", i);
+        let v = E(m[3], i);
+        if (m[2]) {
+          if (!(name in ctx.vars)) throw new PyErr("NameError", `name '${name}' is not defined`, i);
+          v = binop(m[2], ctx.vars[name], v);
+        }
+        ctx.vars[name] = v;
+      } else { tick(i); E(c, i); }
+    }
+  }
+  try {
+    block(build(-1), 0);
+    return { src, output: ctx.out, executed };
+  } catch (e) {
+    if (e instanceof PyErr) {
+      const line = e.line === undefined ? ctx.line : e.line;
+      return { src, output: ctx.out, executed, error: { type: e.type, msg: e.message, line, lineno: line + 1 }, runtime: true };
+    }
+    throw e;
+  }
+}
+
+/* ---------- Rendu du code ---------- */
+const KW = new Set(["if", "elif", "else", "for", "while", "in", "and", "or", "not", "def", "return", "pass", "break", "continue", "True", "False", "None", "import", "from", "class", "try", "except", "finally", "with", "as", "is", "lambda", "global"]);
+const BI = new Set(["print", "input", "len", "range", "int", "str", "float", "abs", "round", "max", "min"]);
+function hl(body) {
+  let out = "";
+  const re = /(#.*$)|([fF]?"(?:[^"\\]|\\.)*"?|[fF]?'(?:[^'\\]|\\.)*'?)|(\b\d+(?:\.\d+)?\b)|([A-Za-z_À-ɏ][\wÀ-ɏ]*)|([\s\S])/g;
+  let m;
+  while ((m = re.exec(body))) {
+    if (m[1]) out += `<span class="c">${esc(m[1])}</span>`;
+    else if (m[2]) out += `<span class="s">${esc(m[2])}</span>`;
+    else if (m[3]) out += `<span class="n">${m[3]}</span>`;
+    else if (m[4]) out += KW.has(m[4]) ? `<span class="k">${m[4]}</span>` : BI.has(m[4]) ? `<span class="b">${m[4]}</span>` : esc(m[4]);
+    else out += esc(m[5]);
+  }
+  return out;
+}
+const colorKey = (an, h) => (h == null || an.color[h] == null ? "x" : an.color[h]);
+function ownBlock(an, ln, chain) {
+  if (ln.level === 0) return null;
+  if (ln.orphan) return "x";
+  return colorKey(an, chain[chain.length - 1]);
+}
+function linesHTML(an, run, errLine) {
+  let html = "";
+  an.lines.forEach((ln, i) => {
+    const chain = chainOf(an, i);
+    const cls = ["ln"];
+    let style = "";
+    const own = ownBlock(an, ln, chain);
+    if (!ln.blank && own !== null) { cls.push("tinted", "bk" + own); style = ` style="--ind:${ln.cols[ln.cols.length - 1]}ch"`; }
+    if (i === errLine) cls.push("err");
+    if (run && !ln.blank) cls.push(run.executed.has(i) ? "ran" : "skip");
+    let g = "";
+    for (let k = 0; k < ln.cols.length - 1; k++) g += `<i class="guide gk${colorKey(an, chain[k])}" style="left:${ln.cols[k]}ch"></i>`;
+    let ws = "";
+    for (const ch of ln.ws) ws += ch === "\t" ? '<span class="w t">\t</span>' : '<span class="w s"> </span>';
+    html += `<div class="${cls.join(" ")}"${style}>${g}${ws}${hl(ln.body)}</div>`;
+  });
+  return html;
+}
+
+/* ---------- État ---------- */
+const ta = $("#code"), overlay = $("#overlay"), gutter = $("#gutter"), editor = $("#editor");
+let current = EXAMPLES[0];
+let A = null, lastRun = null, tabTrapOff = false, showSolution = false, flashMsg = "", flashTimer = 0;
+const done = new Set(store.get("ai-missions2", []));
+const solved = new Set(store.get("ai-solved", []));
+
+function liveRun() { return lastRun && lastRun.src === ta.value ? lastRun : null; }
+
+function render() {
+  if (ta.value.includes("\r")) ta.value = ta.value.replace(/\r/g, "");
+  const src = ta.value;
+  A = fullAnalyze(src);
+  const run = liveRun();
+  const showRun = run && !run.compile ? run : null;
+  const errLine = A.err ? A.err.line : run && run.error ? run.error.line : -1;
+  overlay.innerHTML = linesHTML(A, showRun, errLine);
+
+  let g = "";
+  A.lines.forEach((ln, i) => {
+    const own = ownBlock(A, ln, chainOf(A, i));
+    const cls = ["gl"];
+    if (own !== null) cls.push("bk" + own);
+    if (i === errLine) cls.push("err");
+    if (showRun && !ln.blank) cls.push(showRun.executed.has(i) ? "ran" : "skip");
+    const btns = ln.blank ? "" :
+      `<button type="button" class="gb" data-act="out" data-line="${i}" title="Retirer une tabulation" aria-label="Retirer une tabulation à la ligne ${i + 1}">‹</button>` +
+      `<button type="button" class="gb" data-act="in" data-line="${i}" title="Ajouter une tabulation" aria-label="Ajouter une tabulation à la ligne ${i + 1}">›</button>`;
+    g += `<div class="${cls.join(" ")}"><span class="bar"></span><span class="num">${i + 1}</span><span class="gbs">${btns}</span></div>`;
+  });
+  gutter.innerHTML = g;
+  ta.scrollTop = 0;
+
+  renderGoal();
+  renderDiag();
+  renderTree();
+  renderConsole();
+  checkMissions();
+  updateStatus();
+}
+
+function updateStatus() {
+  if (!A) return;
+  const i = lineOf(ta.value, ta.selectionStart);
+  const ln = A.lines[i];
+  if (!ln) return;
+  const t = (ln.ws.match(/\t/g) || []).length, s = (ln.ws.match(/ /g) || []).length;
+  const ind = t ? `${t} tabulation${t > 1 ? "s" : ""}` : "0 tabulation";
+  let where = "";
+  if (ln.blank) where = "ligne vide : ignorée";
+  else if (ln.orphan) where = '<span class="warn">bloc inattendu</span>';
+  else if (ln.level === 0) where = "hors bloc";
+  else { const hc = A.lines[ln.header].code; where = `bloc <code>${esc(hc.length > 30 ? hc.slice(0, 29) + "…" : hc)}</code>`; }
+  const sp = s ? ' <span class="warn">espaces détectés : remplace-les par des tabulations</span>' : "";
+  const fl = flashMsg ? ` <span class="warn">${flashMsg}</span>` : "";
+  $("#status").innerHTML = `<b>Ligne ${i + 1}</b><span class="ind">${ind}</span><span>${where}</span>${sp}${fl}`;
+}
+function flash(msg) {
+  flashMsg = msg; updateStatus();
+  clearTimeout(flashTimer);
+  flashTimer = setTimeout(() => { flashMsg = ""; updateStatus(); }, 2200);
+}
+
+function errorHelp(err) {
+  const n = err.line + 1;
+  return ({
+    unexpected: ["Tabulation en trop", "Retire la tabulation, ou termine la ligne au-dessus par <code>:</code>."],
+    expected: ["Bloc vide après <code>:</code>", `Ajoute une tabulation à la ligne ${(err.header ?? err.line) + 2}.`],
+    dedent: ["Ligne mal alignée", "Aligne-la sur un bloc existant."],
+    tab: ["Espaces mélangés aux tabulations", "Remplace les espaces par des tabulations."],
+    colon: ["<code>:</code> manquant", `Ajoute <code>:</code> à la fin de la ligne ${n}.`],
+    else: [`<code>${esc(err.kw || "")}</code> mal aligné`, "Aligne-le sur son <code>if</code>."],
+    syntax: ["<code>:</code> en trop", "Retire le <code>:</code>."]
+  })[err.key] || ["Erreur de syntaxe", "Relis la ligne signalée."];
+}
+const compileTrace = (err, lines) => `  File "main.py", line ${err.lineno}\n    ${(lines[err.line] || "").trim()}\n${err.type}: ${err.msg}`;
+function runtimeTrace(err, lines) {
+  const code = (lines[err.line] || "").trim();
+  if (err.type === "Limite du simulateur" || err.type === "Arrêt") return `Ligne ${err.lineno} : ${code}\n${err.type} : ${err.msg}`;
+  return `Traceback (most recent call last):\n  File "main.py", line ${err.lineno}, in <module>\n    ${code}\n${err.type}: ${err.msg}`;
+}
+
+function renderDiag() {
+  const d = $("#diag");
+  if (A.err) {
+    const [title, fix] = errorHelp(A.err);
+    d.className = "diag bad";
+    d.innerHTML = `<div class="dt">${title}</div><pre class="tbk">${esc(compileTrace(A.err, A.lines.map((l) => l.raw)))}</pre><div>${fix}</div>`;
+  } else {
+    d.className = "diag ok";
+    d.textContent = "Indentation correcte.";
+  }
+}
+
+function blockHint(code) {
+  const kw = (code.match(/^[A-Za-z_]+/) || [""])[0];
+  if (!code.endsWith(":")) return "bloc inattendu";
+  return { if: "si vrai", elif: "sinon, si vrai", else: "sinon", for: "répété", while: "tant que vrai" }[kw] || "";
+}
+function renderTree() {
+  const kids = A.kids;
+  const box = (h) => {
+    const items = (kids[h] || []).map((i) => {
+      const ln = A.lines[i];
+      let s = `<li class="${ln.orphan ? "badline" : ""}"><button type="button" class="sline" data-line="${i}"><span class="lno">${i + 1}</span><code>${esc(ln.code)}</code></button>`;
+      if (kids[i]) s += box(i);
+      return s + "</li>";
+    }).join("");
+    if (h === -1) return `<div class="blk root"><div class="bh">Programme principal</div><ul>${items}</ul></div>`;
+    const code = A.lines[h].code;
+    const bad = !code.endsWith(":");
+    const hint = blockHint(code);
+    return `<div class="blk bk${bad ? "x" : colorKey(A, h)}"><div class="bh"><span>${esc(code)}</span>${hint ? `<span class="hint">· ${hint}</span>` : ""}</div><ul>${items}</ul></div>`;
+  };
+  $("#tree").innerHTML = kids["-1"] ? box(-1) : '<p class="muted" style="margin:0">Éditeur vide.</p>';
+  $("#treeInfo").textContent = A.err ? "provisoire" : "";
+}
+
+function renderConsole() {
+  const box = $("#out"), st = $("#runState");
+  if (!lastRun) { box.innerHTML = '<span class="muted">Clique sur Exécuter.</span>'; st.textContent = "Pas encore exécuté"; st.className = "pill"; return; }
+  const lines = lastRun.src.split("\n");
+  let html;
+  if (lastRun.compile) {
+    html = `<span class="tb">${esc(compileTrace(lastRun.error, lines))}</span><span class="note">Aucune ligne exécutée : Python vérifie l'indentation avant de démarrer.</span>`;
+  } else {
+    html = esc(lastRun.output) || (lastRun.error ? "" : '<span class="muted">(rien affiché)</span>');
+    if (lastRun.error) {
+      html += `<span class="tb">${esc(runtimeTrace(lastRun.error, lines))}</span>`;
+      const help = {
+        NameError: "Variable inconnue : sa création est peut-être dans un bloc non exécuté.",
+        TypeError: "Types incompatibles (texte et nombre ?).",
+        ZeroDivisionError: "Division par zéro.",
+        ValueError: "Conversion impossible.",
+        "Arrêt": "La ligne qui modifie la variable de la boucle est-elle dans le bloc ?",
+        "Limite du simulateur": "Non géré ici. Teste dans Thonny."
+      }[lastRun.error.type];
+      if (help) html += `<span class="note">${help}</span>`;
+    }
+  }
+  box.innerHTML = html;
+  if (lastRun.src !== ta.value) { st.textContent = "Code modifié"; st.className = "pill warn"; }
+  else if (lastRun.error) { st.textContent = "Erreur"; st.className = "pill err"; }
+  else { st.textContent = `${lastRun.executed.size} ligne${lastRun.executed.size > 1 ? "s" : ""} exécutée${lastRun.executed.size > 1 ? "s" : ""}`; st.className = "pill ok"; }
+}
+
+/* ---------- Exercice en cours ---------- */
+function expectedOf(x) { if (x._exp === undefined) x._exp = simulate(x.solution).output.trimEnd(); return x._exp; }
+function renderGoal() {
+  const g = $("#goal");
+  if (!current.repair) { g.hidden = true; return; }
+  g.hidden = false;
+  const r = liveRun();
+  let ok = false, state = "";
+  if (r) {
+    ok = !r.error && r.output.trimEnd() === expectedOf(current);
+    if (ok && !solved.has(current.id)) { solved.add(current.id); store.set("ai-solved", [...solved]); }
+    state = ok ? '<span class="state ok">✓ Réparé</span>' : '<span class="state ko">Pas encore</span>';
+  }
+  g.classList.toggle("solved", ok);
+  const sol = showSolution ? `<div class="code-static show-tabs">${linesHTML(fullAnalyze(current.solution), null, -1)}</div>` : "";
+  g.innerHTML = `<div class="row"><span><span class="tag">À réparer${solved.has(current.id) ? " · déjà réussi" : ""}</span><br>${esc(current.goal)}</span>
+    <span class="toolbar">${state}<button type="button" class="btn small" id="solBtn">${showSolution ? "Masquer la solution" : "Solution"}</button></span></div>${sol}`;
+}
+$("#goal").addEventListener("click", (e) => { if (e.target.closest("#solBtn")) { showSolution = !showSolution; renderGoal(); } });
+
+/* ---------- Missions ---------- */
+const MISSIONS = [
+  { t: "Provoque une « unexpected indent ».", check: () => A.err && A.err.key === "unexpected" },
+  { t: "Provoque une « expected an indented block ».", check: () => A.err && A.err.key === "expected" },
+  { t: "Condition simple : affiche « Tu peux voter. » sans « Tu es majeur. », en déplaçant seulement des lignes.",
+    check: () => {
+      const r = liveRun(); if (!r || r.error) return false;
+      const src = ta.value;
+      return /age\s*=\s*15\b/.test(src) && src.includes('print("Tu es majeur.")') && r.output.includes("Tu peux voter.") && !r.output.includes("Tu es majeur.");
+    } },
+  { t: "Répare les 6 exercices « À réparer ».", check: () => EXAMPLES.filter((x) => x.repair).every((x) => solved.has(x.id)), progress: () => `${EXAMPLES.filter((x) => x.repair && solved.has(x.id)).length}/6` }
+];
+function checkMissions() {
+  let changed = false;
+  MISSIONS.forEach((m, k) => { if (!done.has(k) && m.check()) { done.add(k); changed = true; } });
+  if (changed) store.set("ai-missions2", [...done]);
+  $("#missions").innerHTML = MISSIONS.map((m, k) =>
+    `<li class="mission${done.has(k) ? " done" : ""}"><span class="tick" aria-hidden="true">${done.has(k) ? "✓" : k + 1}</span><span><span class="t">${m.t}</span>${m.progress && !done.has(k) ? ` <span class="progress">${m.progress()}</span>` : ""}</span></li>`
+  ).join("");
+  $("#misProgress").textContent = `${done.size} / ${MISSIONS.length}`;
+}
+
+/* ---------- Édition (tabulations uniquement) ---------- */
+function replaceRange(s, e, text) {
+  const old = ta.value;
+  const expected = old.slice(0, s) + text + old.slice(e);
+  if (document.activeElement === ta) {
+    ta.setSelectionRange(s, e);
+    let ok = false;
+    try { ok = text === "" ? document.execCommand("delete") : document.execCommand("insertText", false, text); } catch (_) { ok = false; }
+    if (ok && ta.value === expected) return;
+    if (ta.value !== old && ta.value !== expected) ta.value = old;
+  }
+  if (ta.value !== expected) ta.setRangeText(text, s, e, "end");
+  render();
+}
+function shiftLines(a, b, dir, fromGutter) {
+  const src = ta.value, starts = lineStarts(src), lines = src.split("\n");
+  const start = starts[a];
+  const end = b + 1 < starts.length ? starts[b + 1] - 1 : src.length;
+  const selS = ta.selectionStart, selE = ta.selectionEnd;
+  const out = [], deltas = [];
+  for (let i = a; i <= b; i++) {
+    let l = lines[i], d = 0;
+    if (dir > 0) { if (l.trim() !== "" || a === b) { l = "\t" + l; d = 1; } }
+    else if (l[0] === "\t") { l = l.slice(1); d = -1; }
+    else { const sp = l.match(/^ {1,4}/); if (sp) { l = l.slice(sp[0].length); d = -sp[0].length; } }
+    out.push(l); deltas.push(d);
+  }
+  const text = out.join("\n");
+  if (text === src.slice(start, end)) return;
+  const focused = document.activeElement === ta;
+  replaceRange(start, end, text);
+  if (!focused) return;
+  if (fromGutter) { const w = out[0].match(/^[ \t]*/)[0].length; ta.setSelectionRange(start + w, start + w); }
+  else if (a === b && selS === selE) { const p = Math.max(start, selS + deltas[0]); ta.setSelectionRange(p, p); }
+  else ta.setSelectionRange(start, start + text.length);
+  updateStatus();
+}
+const inIndent = (src, s) => /^[ \t]*$/.test(src.slice(src.lastIndexOf("\n", s - 1) + 1, s));
+
+ta.addEventListener("input", render);
+ta.addEventListener("scroll", () => { ta.scrollTop = 0; });
+ta.addEventListener("beforeinput", (e) => {
+  if (e.inputType === "insertText" && e.data && /^ +$/.test(e.data) && inIndent(ta.value, ta.selectionStart)) {
+    e.preventDefault();
+    flash("En début de ligne, utilise Tab.");
+  }
+});
+ta.addEventListener("paste", (e) => {
+  const t = e.clipboardData && e.clipboardData.getData("text/plain");
+  if (t == null) return;
+  const conv = toTabs(t.replace(/\r/g, ""));
+  if (conv === t) return;
+  e.preventDefault();
+  replaceRange(ta.selectionStart, ta.selectionEnd, conv);
+});
+ta.addEventListener("keydown", (e) => {
+  if (e.isComposing) return;
+  if (e.key === "Escape") { tabTrapOff = true; return; }
+  if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); runNow(); return; }
+  if (e.key === "Tab") {
+    if (tabTrapOff) { tabTrapOff = false; return; }
+    e.preventDefault();
+    const src = ta.value, s = ta.selectionStart, en = ta.selectionEnd;
+    const a = lineOf(src, s);
+    const b = lineOf(src, en > s && src[en - 1] === "\n" ? en - 1 : en);
+    if (e.shiftKey) shiftLines(a, b, -1);
+    else if (a === b && s === en) { if (inIndent(src, s)) replaceRange(s, s, "\t"); else shiftLines(a, a, 1); }
+    else shiftLines(a, b, 1);
+    return;
+  }
+  tabTrapOff = false;
+  if (e.key === "Enter" && !e.shiftKey && !e.altKey) {
+    e.preventDefault();
+    const src = ta.value, s = ta.selectionStart;
+    const cur = src.slice(src.lastIndexOf("\n", s - 1) + 1, s);
+    const ws = cur.match(/^[ \t]*/)[0];
+    const add = stripComment(cur).trimEnd().endsWith(":") ? "\t" : "";
+    replaceRange(s, ta.selectionEnd, "\n" + ws + add);
+  }
+});
+["keyup", "click", "focus"].forEach((ev) => ta.addEventListener(ev, updateStatus));
+document.addEventListener("selectionchange", () => { if (document.activeElement === ta) updateStatus(); });
+
+gutter.addEventListener("mousedown", (e) => { if (e.target.closest(".gb")) e.preventDefault(); });
+gutter.addEventListener("click", (e) => {
+  const b = e.target.closest(".gb"); if (!b) return;
+  const i = +b.dataset.line;
+  shiftLines(i, i, b.dataset.act === "in" ? 1 : -1, true);
+});
+$("#tree").addEventListener("click", (e) => {
+  const b = e.target.closest(".sline"); if (!b) return;
+  const i = +b.dataset.line, starts = lineStarts(ta.value), ln = A.lines[i];
+  ta.focus({ preventScroll: true });
+  ta.setSelectionRange(starts[i] + (ln ? ln.ws.length : 0), starts[i] + (ln ? ln.raw.length : 0));
+  editor.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  updateStatus();
+});
+
+function runNow() { lastRun = simulate(ta.value); render(); }
+$("#run").addEventListener("click", runNow);
+
+const sel = $("#example");
+const opt = (x) => `<option value="${x.id}">${esc(x.name)}</option>`;
+sel.innerHTML = `<optgroup label="Exemples">${EXAMPLES.filter((x) => !x.repair).map(opt).join("")}</optgroup>` +
+  `<optgroup label="À réparer">${EXAMPLES.filter((x) => x.repair).map(opt).join("")}</optgroup>`;
+function loadExample(x) {
+  current = x; lastRun = null; showSolution = false;
+  if (document.activeElement === ta) replaceRange(0, ta.value.length, x.code);
+  else { ta.value = x.code; render(); }
+}
+sel.addEventListener("change", () => loadExample(EXAMPLES.find((x) => x.id === sel.value)));
+$("#reset").addEventListener("click", () => loadExample(current));
+
+const st = $("#showTabs");
+st.checked = store.get("ai-showtabs", true);
+const applyTabs = () => { editor.classList.toggle("show-tabs", st.checked); store.set("ai-showtabs", st.checked); };
+st.addEventListener("change", applyTabs);
+
+/* ---------- Comparaison ---------- */
+function staticBlock(el, src) {
+  src = toTabs(src);
+  const r = simulate(src);
+  el.innerHTML = `<div class="code-static show-tabs">${linesHTML(fullAnalyze(src), r, -1)}</div><div class="mini-out"><span>Affiche :</span><pre>${esc(r.output.trimEnd())}</pre></div>`;
+}
+staticBlock($("#cmpA"), 'age = 15\nif age >= 18:\n    print("Tu es majeur.")\n    print("Tu peux voter.")\nprint("Fin")');
+staticBlock($("#cmpB"), 'age = 15\nif age >= 18:\n    print("Tu es majeur.")\nprint("Tu peux voter.")\nprint("Fin")');
+
+ta.value = current.code;
+applyTabs();
+render();
+})();
+</script>
+</body>
+</html>

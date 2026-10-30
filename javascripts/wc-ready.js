@@ -1,0 +1,1 @@
+window.WebComponents = { ready: true };
