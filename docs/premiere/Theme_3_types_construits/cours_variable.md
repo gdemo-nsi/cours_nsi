@@ -49,28 +49,27 @@ Vous pouvez directement afficher du texte, où faire des calculs.
 Imaginez votre armoire. Normalement, chaque vêtement à une place précise. Un ordinateur va attribuer une "place précise" (*qu'on appelle allocation mémoire*) à un nombre, texte, objet, etc. &rarr; **une variable**.  
 Vous pouvez nommer cette **variable** comme bon vous semble et lui mettre la valeur de votre choix.  
 
-![image](data/commode.jpg){: .center}
+![image](data/commode.jpg){: .center width=30%}
 
-zzzz
-
-> Par exemple : je souhaite stocker la valeur "chaussettes rouges" dans une variable que je vais nommer `tiroir`.  
+> Par exemple : je souhaite stocker la valeur "chaussettes rouges" dans une variable que je vais nommer `tiroir_chaussette`.  
 > Ainsi en python ça donne :  
 ```python
-tiroir = "chaussettes rouges"
-```
-> :writing_hand: Créez votre tiroir dans la console et affichez le !
+tiroir_chaussette = "chaussettes rouges"
+```  
+
+> :writing_hand: Créez votre première varaible "tiroir_chaussette" dans la console et affichez la dans la console !
 
 
 !!! info "Problème de variable"
-    **> Considérons la phrase *«nous allons stocker le prix du spectacle dans une variable  ```a```, qui vaudra au départ 32.»***
+    &rarr; **Considérons la phrase *«nous allons stocker le prix du spectacle dans une variable  ```a```, qui vaudra au départ 32.»***
 
     Il y a plusieurs commentaires à faire sur une telle annonce :
 
-    - Dans le problème que l'on cherche à modéliser, le prix du spectacle est une donnée importante, qui va peut-être évoluer (ou pas !).
-    - Pour la manipuler plus simplement, on va la désigner par un nom, le **nom de la variable** (ici, le nom ```a``` est particulièrement mal choisi, voir D. Bonnes pratiques de nommage)
-    - Comme en mathématiques, le nom de cette variable va désigner une valeur qui peut changer (*varier*) au cours du temps (encore une fois : ou pas).
-    - Cette valeur est fixée *au départ* à 32. On dira en informatique qu'elle est **initialisée** à 32.
-    - Si cette valeur ne change pas, on dira qu'elle est constante. Cela peut paraître inutile de donner un nom à quelque chose qui ne change pas, mais cela est très utile de définir les constantes au début d'un programme. 
+    - Dans le problème que l'on cherche à modéliser, le prix du spectacle est une donnée importante, qui va peut-être évoluer.
+    - Pour la manipuler plus simplement, on va la désigner par un nom, le **nom de la variable** (ici, le nom ```a``` est particulièrement mal choisi, voir [D. Bonnes pratiques de nommage](#d-bonnes-pratiques-de-nommage))
+    - Comme en mathématiques, le nom de cette variable va désigner une valeur qui peut changer (*varier*) au cours du temps, ou pas.
+    - Cette valeur est fixée *au départ* à 32. On dira en informatique qu'elle est **initialisée** à 32. :heart:
+    - Si cette valeur ne change pas, on dira qu'elle est constante. Il faut définir les constantes au début d'un programme. 
 
 ### A.2 A vos consoles !
 La phrase précédente donnera donc lieu à la ligne Python suivante :
@@ -536,6 +535,48 @@ Il suffit dans la console d'utiliser la fonction `type`.
         f : `Bool`  
         g : `str`
 
+## D. Bonnes pratiques de nommage
+
+### D.1 Ce qui est autorisé et ce qui ne l'est pas
+
+Pour nommer correctement une variable, il existe des règles à respecter.
+
+!!! abstract "Les règles - Selon la norme [PEP-8](https://peps.python.org/pep-0008/){: target="_blank"}"
+    - le nom de la variable peut contenir les caractères suivants :
+        - des lettres **non accentuées**. Attention, minuscule et majuscule sont des caractères différents. Les accents sont en fait *tolérés* mais sont à éviter.
+        - des chiffres (mais pas comme premier caractère)
+        - le tiret du bas _ (underscore, tiret du 8)
+    
+    - le nom de la variable **ne doit pas** commencer par un chiffre
+    - le nom de la variable **ne doit pas** contenir d'espace
+    - le nom de la variable **ne doit pas** être un mot-clé du langage (par ex. `min` et `max` ne peuvent pas être des variables).
+
+
+
+
+### D.2 Du sens, du sens, du sens
+
+Hormis pour les indices (de boucles, de tableaux...) un nom de variable (dans un programme destiné à être lu, par vous ou quelqu'un d'autre) doit **impérativement avoir du sens** :
+
+```python
+# PAS BIEN
+if d == 1:
+    cep += vm
+
+# BIEN
+if date == 1:
+    compte_epargne += versement_mensuel
+```
+
+
+!!! tip "Règle d'or :heart:" 
+    On ne donne jamais un nom de variable au hasard, on le choisit pour qu'il soit **explicite**.
+
+
+![image](data/memevar1.jpg){: .center width=40%}
+
+Oui mais pour donner du sens, il faut souvent plusieurs mots...
+La longueur du nom de la variable (*«c'est trop long à taper»*) n'est plus un problème depuis que la grande majorité des IDE propose la **complétion automatique**.  
 <!--
 ### C.1 Python et le typage dynamique
 

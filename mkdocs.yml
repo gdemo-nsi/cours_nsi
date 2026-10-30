@@ -30,6 +30,11 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/wc-ready.js
+  - javascripts/gif-player.js
+
+
 nav:
   - Accueil: index.md
   - Seconde:
@@ -145,5 +150,7 @@ plugins:
   - search
   - mkdocs-jupyter:
       include_source: true
+
+
 
 repo_name: gdemo-nsi/cours_nsi
