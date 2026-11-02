@@ -33,6 +33,7 @@ extra_css:
 extra_javascript:
   - javascripts/wc-ready.js
   - javascripts/gif-player.js
+  - javascripts/liens.js
 
 
 nav:
@@ -104,6 +105,7 @@ nav:
       - Thème 2 - Piles et Files :
           - Sommaire: terminale/Theme_2_Piles_Files/sommaire.md
           - Cours: terminale/Theme_2_Piles_Files/cours.md
+          - Exercices: terminale/Theme_2_Piles_Files/exercices.md
       - Thème 3:
           - Sommaire: terminale/Theme_3_Nom_du_theme/sommaire.md
       - Thème 4:
