@@ -301,7 +301,7 @@
 -->
 
 !!! example "Exercice 1"
-    Exercice 2 Partie A du sujet [Métropole Septembre 2022](../../T6_Annalesdata/2022/2022_Metropole_Septembre.pdf){. target="_blank"}
+    Exercice 2 Partie A du sujet [Métropole Septembre 2022](../../T6_Annales/data/2022/2022_Metropole_Septembre.pdf){. target="_blank"}
 
 
     ??? success "Correction Q1.a" 
@@ -341,7 +341,7 @@
 
 
 !!! example "Exercice 2"
-    Exercice 5 du sujet [Métropole J1 2022](../../T6_Annalesdata/2022/2022_Metropole_J1.pdf){. target="_blank"}
+    Exercice 5 du sujet [Métropole J1 2022](../../T6_Annales/data/2022/2022_Metropole_J1.pdf){. target="_blank"}
 
 
     ??? success "Correction Q1" 
@@ -401,7 +401,7 @@
         
         
 !!! example "Exercice 3"
-    Exercice 2 du sujet [La Réunion J1 2022](../../T6_Annalesdata/2022/2022_LeReunion_J1.pdf){. target="_blank"}
+    Exercice 2 du sujet [La Réunion J1 2022](../../T6_Annales/data/2022/2022_LeReunion_J1.pdf){. target="_blank"}
 
 
     ??? success "Correction Q1.a" 
@@ -460,7 +460,7 @@
 
 
 !!! example "Exercice 4"
-    Exercice 3 (partie A et B) du [sujet Métropole J1 2024](../../T6_Annalesdata/2024/24-NSIJ1ME.pdf){. target="_blank"}   
+    Exercice 3 (partie A et B) du [sujet Métropole J1 2024](../../T6_Annales/data/2024/24-NSIJ1ME.pdf){. target="_blank"}   
 
     **Partie A**
 
@@ -530,7 +530,7 @@
 
 
 !!! example "Exercice 5" 
-    Exercice 1 du [sujet Centres Étrangers J2 2024](../../T6_Annalesdata/2024/24-NSIJ2G1.pdf){. target="_blank"}   
+    Exercice 1 du [sujet Centres Étrangers J2 2024](../../T6_Annales/data/2024/24-NSIJ2G1.pdf){. target="_blank"}   
 
 
     ```python linenums='1'
@@ -689,7 +689,7 @@
 
 
 !!! example "Exercice 6"
-    Exercice 2 du [sujet Amérique du Nord J1 2025](data/2025/25_NSIJ1AN1.pdf){. target="_blank"}   
+    Exercice 2 du [sujet Amérique du Nord J1 2025](../../T6_Annales/data/2025/25_NSIJ1AN1.pdf){. target="_blank"}   
 
     ```python
     class Colis:
@@ -863,7 +863,7 @@
 
 
 !!! example "Exercice 7"
-    Exercice 3 du [sujet Asie J1 2024](data/2024/24-NSIJ1JA1.pdf){. target="_blank"}   
+    Exercice 3 du [sujet Asie J1 2024](../../T6_Annales/data/2024/24-NSIJ1JA1.pdf){. target="_blank"}   
 
     ```python
     class Personne():
@@ -1042,7 +1042,7 @@
 
 
 !!! example "Exercice  8"
-    Exercice 3 du [sujet Métropole J1 2023](data/2023/2023_Metropole_J1.pdf){. target="_blank"}
+    Exercice 3 du [sujet Métropole J1 2023](../../T6_Annales/data/2023/2023_Metropole_J1.pdf){. target="_blank"}
 
     ```python
     class Region:
@@ -1198,10 +1198,10 @@
 
 
 !!! example "Exercice 9"
-    Exercice 3 du [sujet Amérique du Nord J2 2024](data/2024/24-NSIJ2AN1.pdf){. target="_blank"} 
+    Exercice 3 du [sujet Amérique du Nord J2 2024](../../T6_Annales/data/2024/24-NSIJ2AN1.pdf){. target="_blank"} 
       
     ??? abstract "Blockchain"
-        ![image](data/blockchain.jpg){: .center}
+        ![image](../../T6_Annales/data/blockchain.jpg){: .center}
         
     ```python
     class Transaction:
@@ -1360,7 +1360,7 @@
 
 
 !!! example "Exercice 10"
-    Exercice 1 du [sujet Centre Étrangers J1 2025](data/2025/25_NSIJ1G11.pdf){. target="_blank"}
+    Exercice 1 du [sujet Centre Étrangers J1 2025](../../T6_Annales/data/2025/25_NSIJ1G11.pdf){. target="_blank"}
 
     ```python linenums='1'
     class Balise:

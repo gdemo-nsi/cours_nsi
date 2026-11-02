@@ -5,7 +5,7 @@ Fiche 📜 entrainement autonomie : [Fiche liste exercices python](../entraineme
 
 !!! tip "Thème en cours d'étude :"
     - [Paradigmes (POO)](Theme_1_POO/sommaire.md)
-    - [Type bac POO](Theme_1_POO/type_balles.md)  
+    - [Type bac POO](Theme_1_POO/type_bac.md)  
   
     - [TNSI_1.1_POO_Mtg](https://capytale2.ac-paris.fr/web/c/0678-11842190/mln){: target="_blank"}
     
