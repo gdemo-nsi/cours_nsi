@@ -1,2 +1,1 @@
-
-1. test : [outil indentation](data/outil_indentation.html){: target ="_blank"}
+1. [Cours conditions (if, else, elif)](conditions.md)
