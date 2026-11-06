@@ -73,11 +73,11 @@ nav:
           - Exercices: premiere/Theme_2_systeme_exploitation/exercices.md
       - Thème 3 - Types construits:
           - Sommaire: premiere/Theme_3_types_construits/sommaire.md
-          - Cours: premiere/Theme_3_types_construits/cours_variable.md
+          - Cours - Variables: premiere/Theme_3_types_construits/cours_variable.md
           - Exercices: premiere/Theme_3_types_construits/exercices.md
       - Thème 4 - Constructions élémentaires:
           - Sommaire: premiere/Theme_4_Constructions_elementaires/sommaire.md
-          - Cours Conditions If, Else : premiere/Theme_4_Constructions_elementaires/conditions.md
+          - Cours - Conditions If, Else : premiere/Theme_4_Constructions_elementaires/conditions.md
       - Thème 5 - Architecture Materielle:
           - Sommaire: premiere/Theme_5_Nom_du_theme/sommaire.md
       - Thème 6 - Algorithmique:
