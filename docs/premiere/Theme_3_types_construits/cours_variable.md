@@ -266,7 +266,7 @@ Une fois évaluée l'expression à droite du signe =, il ne reste plus qu'à l'a
 Comme expliqué précédemment, un «lien» est fait entre le nom de la variable et l'adresse-mémoire qui contient la valeur évaluée.  
 ```a``` sera donc lié à la valeur 5. Plus simplement, on dira que «```a``` vaut 5» 
 
-#### B.3.2 L'incrémentation d'une variable.
+#### B.3.3 L'incrémentation d'une variable.
 
 *«Incrémenter»* une variable signifie l'augmenter. 
 
@@ -359,7 +359,7 @@ Cette procédure d'**incrémentation** est très très classique, il faut la ma�
 
 !!! example "Exercice 3"
 
-    :wrinting_hand: Écrire le code de l'instruction suivante :
+    :writing_hand: Écrire le code de l'instruction suivante :
 
     1. On initialise une variable ```capital``` à 100.
     2. On lui enlève 5%.
@@ -377,10 +377,10 @@ Cette procédure d'**incrémentation** est très très classique, il faut la ma�
 
         ```
 
-### B.3.3 L'échange de variables
-??? warning "B.3.3 Partie optionnelle - **Echange de variables**"
+### B.4 L'échange de variables
+??? warning "B.4 Partie optionnelle - **Echange de variables**"
 
-    ### B.3.3 L'échange de variables
+    ### B.4 L'échange de variables
     Après l'incrémentation, une autre technique de base reviendra fréquemment dans nos codes : **l'échange de variables**.
 
     Imaginons les variables suivantes :
