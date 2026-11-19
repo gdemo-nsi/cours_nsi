@@ -7,8 +7,10 @@ Progression annuel : &rarr; [Thèmes de l'année](progression_prem.md)
 &rarr; [Lien vers ordre de passage ](https://docs.google.com/spreadsheets/d/1Zw8ExMJ7VGeOpkh9FcD2wdSFKX-o3I1kvgfNcr00cUg/edit?usp=sharing){: target="_blank"}
 
 !!! tip "Thèmes en cours d'étude :"
-    - [T2 Cours sur les système d'exploitation](https://docs.google.com/presentation/d/1VuoajmAcA3ZuBzrIiC3cTLRvIZ9qmzSt3i4vZxfeiuE/edit?usp=sharing){: target="_blank"}
-    - [Mini jeu cmd - Terminus (lien cliquable)](https://luffah.xyz/bidules/Terminus/){: target ="_blank"}**  
+    - [Cours - Les variables](cours_variable.md) 
+    - :warning: &rarr; Il faut que [thonny](Theme_3_types_construits/thonny-4.1.7-windows-portable.zip) soit téléchargé sur vos PC. 
+    - [La ressourcerie - PyAlgo](https://pyalgo.forge.apps.education.fr/index.html){: target="_blank"}
+    - [Activité 3.1 : Rappels sur les variables](https://capytale2.ac-paris.fr/web/c/74e9-12869043/mln){: target="_blank"}
 ___
 
 !!! note "Thèmes 1NSI"
