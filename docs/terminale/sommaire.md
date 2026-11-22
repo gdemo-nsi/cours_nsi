@@ -4,9 +4,11 @@ Progression annuel : [Thèmes de l'année](progression_term.md)
 Fiche 📜 entrainement autonomie : [Fiche liste exercices python](../entrainement_autonomie.md)
 
 !!! tip "Thème en cours d'étude :"
-    - [Paradigmes (POO)](Theme_1_POO/sommaire.md)
+    - [Vocabulaire pour la POO :heart:](Theme_1_POO/sommaire.md)
+    - [Projet n°1 - Balatro](Theme_1_POO/projet_1.md)
     - [Type bac POO](Theme_1_POO/type_bac.md) &rarr; Exercice 8 à faire
-    - [TNSI_1.1_POO_Mtg](https://capytale2.ac-paris.fr/web/c/0678-11842190/mln){: target="_blank"}
+    - [Thème 2 - cours](Theme_2_Piles_Files/cours.md)
+    
     
 ___
 
