@@ -4,7 +4,8 @@ Progression annuel : &rarr; [Thèmes de l'année](progression_prem.md)
 
 
 &rarr; [Présentation hebdomadaire métier / new technologique](presentation.md)  
-&rarr; [Lien vers ordre de passage ](https://docs.google.com/spreadsheets/d/1Zw8ExMJ7VGeOpkh9FcD2wdSFKX-o3I1kvgfNcr00cUg/edit?usp=sharing){: target="_blank"}
+
+<!--&rarr; [Lien vers ordre de passage ](https://docs.google.com/spreadsheets/d/1Zw8ExMJ7VGeOpkh9FcD2wdSFKX-o3I1kvgfNcr00cUg/edit?usp=sharing){: target="_blank"} -->
 
 !!! tip "Thèmes en cours d'étude :"
     - [T2 Cours sur les système d'exploitation](https://docs.google.com/presentation/d/1VuoajmAcA3ZuBzrIiC3cTLRvIZ9qmzSt3i4vZxfeiuE/edit?usp=sharing){: target="_blank"}

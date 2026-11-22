@@ -13,7 +13,7 @@ ___
     | N° | Thème |
     |---|-------|
     | 1 | [Internet](Theme_1_Internet/cours.md) |
-    | 2 | [Le Web](Theme_2_Nom_du_theme/sommaire.md) |
+    | 2 | [Le Web](Theme_2_Web/cours.md) |
     | 3 | [Réseaux sociaux](Theme_3_Nom_du_theme/sommaire.md) |
     | 4 | [Données structurées](Theme_4_Nom_du_theme/sommaire.md) |
     | 5 | [Localisation, cartographie et mobilité](Theme_5_Nom_du_theme/sommaire.md) |
@@ -22,4 +22,4 @@ ___
     | 8 | [Thème 8](Theme_8_Nom_du_theme/sommaire.md) |
 
 
-&rarr; [Lien vers vidéo SNT - NSi](https://docs.google.com/document/d/1M5bxEdTRHlc9ILjBcgY-R71jST0_Jp3zj42rKnUL-fY/edit?usp=sharing){: target ="_blank"}
+&rarr; [Lien vers vidéo SNT - NSI](https://docs.google.com/document/d/1M5bxEdTRHlc9ILjBcgY-R71jST0_Jp3zj42rKnUL-fY/edit?usp=sharing){: target ="_blank"}
