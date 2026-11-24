@@ -101,10 +101,15 @@ les éléments sont enfilés les uns à la suite des autres, et on peut défiler
 - la «queue» à la cantine est (si personne ne gruge) traitée sous forme de file.
 
 !!! tip "A retenir :heart: :"
+    - **Interface** : Ensemble d'opérations qui définissent le fonctionnement d'un objet.
+        - *Exemple : Une pédale d'embreyage, une souris d'ordinateur, une montre* 
+    - **Implémentation** : Comment ces interfaces sont programmées.
+        - *Exemple : La boîte moteur, le système d'exploitation de votre ordinateur, le mécanisme de rouage de la montre*    
+
     - **Pile** : LIFO  (Last In First Out)  
-        - *Exemple* : Une pile d'assiette, une pile d'appel.
+        - *Exemple : Une pile d'assiette, une pile d'appel.*
     - **File** : FIFO  (First In First Out)  
-        - *Exemple* : Une file d'attente.
+        - *Exemple : Une file d'attente.*
 
 
 <!--
