@@ -19,8 +19,8 @@ ___
     |---|-------|
     | 1 | [Représentation des données](Theme_1_Representation_des_donnees/cours.md) |
     | 2 | [Systèmes exploitation](Theme_2_systeme_exploitation/sommaire.md) |
-    | 3 | [Types construits](Theme_3_types_construits/sommaire.md) |
-    | 4 | [Constructions élémentaires](Theme_4_Constructions_elementaires/sommaire.md) |
+    | 3 | [Types construits](Theme_3_types_construits/exercices.md) |
+    | 4 | [Constructions élémentaires](Theme_4_Constructions_elementaires/exercices.md) |
     | 5 | [Architecture matérielle](Theme_5_Nom_du_theme/sommaire.md) |
     | 6 | [Algorithmique](Theme_6_Nom_du_theme/sommaire.md) |
     | 7 | [Types construits avancés](Theme_7_Nom_du_theme/sommaire.md) |
