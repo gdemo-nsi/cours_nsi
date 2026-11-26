@@ -629,22 +629,26 @@ Nous y ajouterons comme précédemment la méthode facultative suivante :
 ## 4 Implémentation d'une file avec deux  ?!
 
 Comment créer une file avec 2 piles ?  
+
 L'idée est la suivante : on crée une pile d'entrée et une pile de sortie. 
 
+<!-- 
 - quand on veut enfiler, on empile sur la pile d'entrée.
 - quand on veut défiler, on dépile sur la pile de sortie.
 - si celle-ci est vide, on dépile entièrement la pile d'entrée dans la pile de sortie.
-
+-->
 
 <center>
 <gif-player src="../data/2piles1file.gif" speed="1" play></gif-player>
 </center>
 
 
-!!! exercice "Exercice"
-    Créer une file avec deux piles.
+!!! exercice "Exercice 6"
+    :wrinting_hand: Créer une file avec deux piles.
 
+    Lien vers l'activité noté : [TNSI_T2_exercice_6](https://capytale2.ac-paris.fr/web/c/3686-13159625/mln){: target="_blank"}
 
+<!--
     ??? success "Correction"
         ```python linenums='1'
 
@@ -683,3 +687,4 @@ L'idée est la suivante : on crée une pile d'entrée et une pile de sortie.
         >>> f.defile()
         5
         ```
+-->
